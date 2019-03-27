@@ -32,6 +32,37 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Barbería'),
         ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('Reservas'),
+              IconButton(
+                  icon: Icon(Icons.calendar_today) ,
+                  iconSize: 70,
+                  onPressed: () { print("has pulsado"); },
+              ),
+              Text('Productos'),
+              IconButton(
+                icon: Icon(Icons.add_shopping_cart) ,
+                iconSize: 70,
+                onPressed: () { print("has pulsado"); },
+              ),
+              Text('Horario'),
+              IconButton(
+                icon: Icon(Icons.add_shopping_cart) ,
+                iconSize: 70,
+                onPressed: () { print("has pulsado"); },
+              ),
+              Text('Contacto'),
+              IconButton(
+                icon: Icon(Icons.add_shopping_cart) ,
+                iconSize: 70,
+                onPressed: () { print("has pulsado"); },
+              ),
+            ],
+          ) ,
+        ),
         drawer: Drawer(),
       );
     }
