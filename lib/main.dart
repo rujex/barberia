@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'horario.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,6 +9,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Barberia App',
+      initialRoute: '/inicio',
+      routes: {
+        '/inicio': (context) => Inicio(),
+        '/horario': (context) => Horario(),
+      },
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -40,7 +46,7 @@ class MyApp extends StatelessWidget {
               IconButton(
                   icon: Icon(Icons.calendar_today) ,
                   iconSize: 70,
-                  onPressed: () { print("has pulsado"); },
+                  onPressed: () { print("sadsa"); },
               ),
               Text('Productos'),
               IconButton(
@@ -50,9 +56,11 @@ class MyApp extends StatelessWidget {
               ),
               Text('Horario'),
               IconButton(
-                icon: Icon(Icons.add_shopping_cart) ,
+                icon: Icon(Icons.calendar_today) ,
                 iconSize: 70,
-                onPressed: () { print("has pulsado"); },
+                onPressed: () {
+                  Navigator.pushNamed(context, '/horario');
+                },
               ),
               Text('Contacto'),
               IconButton(
