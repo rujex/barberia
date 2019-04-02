@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
             children: <Widget>[
               Text('Reservas'),
               IconButton(
-                  icon: Icon(Icons.calendar_today) ,
+                  icon: Icon(Icons.add_box) ,
                   iconSize: 70,
                   onPressed: () { print("sadsa"); },
               ),
@@ -64,14 +64,62 @@ class MyApp extends StatelessWidget {
               ),
               Text('Contacto'),
               IconButton(
-                icon: Icon(Icons.add_shopping_cart) ,
+                icon: Icon(Icons.account_circle) ,
                 iconSize: 70,
                 onPressed: () { print("has pulsado"); },
               ),
             ],
           ) ,
         ),
-        drawer: Drawer(),
+        drawer: Drawer(
+          child: ListView(
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                accountName: Text('Rubén'),
+                accountEmail: Text('rujex93rujex@gmail.com'),
+                currentAccountPicture: CircleAvatar(
+                    backgroundImage: NetworkImage('http://i.pravatar.cc/300'),
+                ),
+              ),
+              ListTile(
+                title: Text('Reservas'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/reservas');
+                },
+              ),
+              Divider(
+                color: Colors.black,
+                height: 5.0,
+              ),
+              ListTile(
+                title: Text('Productos'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/productos');
+                },
+              ),
+              Divider(
+                color: Colors.black,
+                height: 5.0,
+              ),
+              ListTile(
+                title: Text('Horario'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/horario');
+                },
+              ),
+              Divider(
+                color: Colors.black,
+                height: 5.0,
+              ),
+              ListTile(
+                title: Text('Contacto'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/contacto');
+                },
+              ),
+            ],
+          ),
+        ),
       );
     }
   }
