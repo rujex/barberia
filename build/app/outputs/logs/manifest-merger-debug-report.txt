@@ -5,6 +5,8 @@ INJECTED from /home/ruben/Documentos/barberia/android/app/src/main/AndroidManife
 INJECTED from /home/ruben/Documentos/barberia/android/app/src/main/AndroidManifest.xml:1:1-33:12
 INJECTED from /home/ruben/Documentos/barberia/android/app/src/main/AndroidManifest.xml:1:1-33:12
 MERGED from /home/ruben/Documentos/barberia/android/app/src/main/AndroidManifest.xml:1:1-33:12
+MERGED from [:shared_preferences] /home/ruben/Documentos/barberia/build/shared_preferences/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-7:12
+MERGED from [:path_provider] /home/ruben/Documentos/barberia/build/path_provider/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-7:12
 INJECTED from /home/ruben/Documentos/barberia/android/app/src/debug/AndroidManifest.xml:1:1-7:12
 INJECTED from /home/ruben/Documentos/barberia/android/app/src/debug/AndroidManifest.xml:1:1-7:12
 INJECTED from /home/ruben/Documentos/barberia/android/app/src/debug/AndroidManifest.xml:1:1-7:12
@@ -64,6 +66,10 @@ uses-sdk
 INJECTED from /home/ruben/Documentos/barberia/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/ruben/Documentos/barberia/android/app/src/main/AndroidManifest.xml
 INJECTED from /home/ruben/Documentos/barberia/android/app/src/main/AndroidManifest.xml
+MERGED from [:shared_preferences] /home/ruben/Documentos/barberia/build/shared_preferences/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /home/ruben/Documentos/barberia/build/shared_preferences/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] /home/ruben/Documentos/barberia/build/path_provider/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] /home/ruben/Documentos/barberia/build/path_provider/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:5:5-44
 INJECTED from /home/ruben/Documentos/barberia/android/app/src/debug/AndroidManifest.xml
 INJECTED from /home/ruben/Documentos/barberia/android/app/src/debug/AndroidManifest.xml
 	android:targetSdkVersion

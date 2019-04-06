@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'horario.dart';
+import 'localizacion.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/inicio': (context) => Inicio(),
         '/horario': (context) => Horario(),
+        '/localizacion': (context) => Localizacion(),
       },
       theme: ThemeData(
         // This is the theme of your application.
@@ -62,11 +64,13 @@ class MyApp extends StatelessWidget {
                   Navigator.pushNamed(context, '/horario');
                 },
               ),
-              Text('Contacto'),
+              Text('Localización'),
               IconButton(
-                icon: Icon(Icons.account_circle) ,
+                icon: Icon(Icons.location_on) ,
                 iconSize: 70,
-                onPressed: () { print("has pulsado"); },
+                onPressed: () {
+                  Navigator.pushNamed(context, '/localizacion');
+                },
               ),
             ],
           ) ,
@@ -112,9 +116,9 @@ class MyApp extends StatelessWidget {
                 height: 5.0,
               ),
               ListTile(
-                title: Text('Contacto'),
+                title: Text('Localización'),
                 onTap: () {
-                  Navigator.pushNamed(context, '/contacto');
+                  Navigator.pushNamed(context, '/localizacion');
                 },
               ),
             ],
