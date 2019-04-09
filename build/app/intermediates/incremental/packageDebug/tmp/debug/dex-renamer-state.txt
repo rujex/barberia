@@ -1,4 +1,4 @@
-#Sat Apr 06 10:32:35 CEST 2019
+#Mon Apr 08 19:47:13 CEST 2019
 base.0=/home/ruben/Documentos/barberia/build/app/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex
