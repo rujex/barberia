@@ -1,56 +1,66 @@
-import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
-  String _email, _password;
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+import 'package:flutter/material.dart';
+import 'hiddenScrollBehavior.dart';
+
+
+class LoginPage extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _LoginPageState();
+
+}
+
+class _LoginPageState extends State<LoginPage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Iniciar sesion'),
+        title: Text('Login'),
       ),
-      body: Form(
-          key: _formkey,
-          child: Column(
-            children: <Widget>[
-                TextFormField(
-                  validator: (input) {
-                    if(input.isEmpty){
-                      return 'Por favor escribe tu email';
-                    }
-                  },
-                  onSaved: (input) => _email = input,
-                  decoration: InputDecoration(
-                    labelText: 'Email'
-                  ),
+      body: Container(
+          padding: EdgeInsets.all(20.0),
+          child: ScrollConfiguration(
+              behavior: HiddenScrollBehavior(),
+              child: Form(
+                child: ListView(
+                  children: <Widget>[
+                    FlutterLogo(
+                      style: FlutterLogoStyle.markOnly,
+                      size: 200.0,
+                    ),
+                    TextFormField(
+                      autocorrect: false,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(labelText: 'Email'),
+                    ),
+                    TextFormField(
+                      obscureText: true,
+                      decoration: InputDecoration(labelText: 'Password'),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20.0),
+                      child: Text('Welcome to Todos app!',
+                        style: TextStyle(color: Color.fromARGB(255, 200, 200, 200)),
+                      ),
+                    ),
+                  ],
                 ),
-                TextFormField(
-                  validator: (input) {
-                    if(input.length < 6){
-                      return 'Tu contraseña necesita tener al menos 6 caracteres';
-                    }
-                  },
-                  onSaved: (input) => _password = input,
-                  decoration: InputDecoration(
-                      labelText: 'Contraseña'
-                  ),
-                  obscureText: true, //oculta texto
-                ),
-              RaisedButton(
-                onPressed: () {},
-                child: Text('Iniciar Sesion'),
               )
-            ],
           )
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        child: Icon(Icons.account_circle),
+      ),
+      persistentFooterButtons: <Widget>[
+        FlatButton(
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+          child: Text('Yo no tengo una cuenta'),
+        )
+      ],
     );
+
   }
 
-  void iniciarSesion(){
-    //TODO validar campos
-    final formEstado = _formkey.currentState;
-    if(formEstado.validate()){
-      //TODO iniciar sesion firebase
-    }
-  }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">476377301022-vlo74osbqvluke0qmbp8noa8ku2m9k1p.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://barberia-d53c2.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">476377301022</string>
+    <string name="google_api_key" translatable="false">AIzaSyBPMqMDvWXs_mVHEt0nO0kUR9EVsXjuiyk</string>
+    <string name="google_app_id" translatable="false">1:476377301022:android:31dfabeba83284f5</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBPMqMDvWXs_mVHEt0nO0kUR9EVsXjuiyk</string>
+    <string name="google_storage_bucket" translatable="false">barberia-d53c2.appspot.com</string>
+    <string name="project_id" translatable="false">barberia-d53c2</string>
+</resources>
