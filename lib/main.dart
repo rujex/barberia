@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:barberia/paginas/registro.dart';
 import 'rutas.dart';
 import 'theme.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(Barberia());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class Barberia extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _BarberiaState();
+}
+
+class _BarberiaState extends State<Barberia> {
+  Widget rootPage = RegistroPage();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Barberia App',
       theme: buildAppTheme(),
-        home: Inicio(),
+        home: rootPage,
       routes: buildAppRoutes(),
     );}
 }
+
 
   class Inicio extends StatelessWidget {
     @override
