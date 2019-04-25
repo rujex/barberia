@@ -49,7 +49,7 @@ class _RegistroPageState extends State<RegistroPage>{
     } catch(e) {
       _scaffoldKey.currentState.hideCurrentSnackBar();
       _scaffoldKey.currentState.showSnackBar(SnackBar(
-          content: Text(e),
+          content: Text(e.message),
           duration: Duration(seconds: 10),
           action: SnackBarAction(
               label: 'Cancelar',

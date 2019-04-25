@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:barberia/paginas/registro.dart';
 import 'rutas.dart';
@@ -12,6 +13,21 @@ class Barberia extends StatefulWidget{
 
 class _BarberiaState extends State<Barberia> {
   Widget rootPage = RegistroPage();
+
+  Future<Widget> getRootPage() async =>
+      await FirebaseAuth.instance.currentUser() == null
+           ? RegistroPage()
+           : Barberia();
+
+  @override
+    initState() {
+      super.initState();
+      getRootPage().then((Widget page) {
+        setState(() {
+          rootPage = page;
+        });
+      });
+    }
 
   @override
   Widget build(BuildContext context) {
