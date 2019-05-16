@@ -5,7 +5,6 @@ import 'package:barberia/main.dart';
 import 'package:barberia/paginas/reservar.dart';
 import 'package:barberia/paginas/horario.dart';
 import 'package:barberia/paginas/localizacion.dart';
-import 'package:barberia/modelo/reservas.dart';
 
 Map<String, WidgetBuilder> buildAppRoutes() {
   return {

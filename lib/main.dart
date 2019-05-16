@@ -12,6 +12,7 @@ class Barberia extends StatefulWidget {
 }
 
 class _BarberiaState extends State<Barberia> {
+
   Widget rootPage = RegistroPage();
 
   Future<Widget> getRootPage() async =>
@@ -41,12 +42,20 @@ class _BarberiaState extends State<Barberia> {
 }
 
 class Inicio extends StatelessWidget {
+
+  //información del usuario logueado
+
+  var user = FirebaseAuth.instance.currentUser;
+  var nombre = user.displayName;
+  var email = user.email;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Barbería'),
       ),
+      
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -90,8 +99,8 @@ class Inicio extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text('Rubén'),
-              accountEmail: Text('rujex93rujex@gmail.com'),
+              accountName: Text(nombre),
+              accountEmail: Text(email),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage('http://i.pravatar.cc/300'),
               ),

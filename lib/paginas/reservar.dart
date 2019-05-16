@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:barberia/modelo/reservas.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:barberia/modelo/reservasModel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Reservar extends StatefulWidget {
   @override
@@ -19,7 +19,6 @@ class _ReservarState extends State<Reservar> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _nombreApellido = TextEditingController();
     _dni = TextEditingController();
@@ -31,7 +30,7 @@ class _ReservarState extends State<Reservar> {
 
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  final FirebaseDatabase _database = new FirebaseDatabase();
+  final Firestore _database = new Firestore();
 
   // Controladores de texto
 
@@ -126,7 +125,7 @@ class _ReservarState extends State<Reservar> {
   _submitForm(String nombre, String dni, String fecha, String domicilio, String movil, String arreglo  ) {
       if (nombre.length > 0 && dni.length > 0  && fecha.length > 0 && domicilio.length > 0 && movil.length > 0 && arreglo.length > 0) {
         Reservas reservas = new Reservas(nombre.toString(), dni.toString(), fecha.toString(), domicilio.toString(), movil.toString(), arreglo.toString());
-        _database.reference().child("reservas").child("cliente").push().set(reservas.toJson());
+        _database.collection("reservas").add(reservas.toJson());
       }
   }
 }
