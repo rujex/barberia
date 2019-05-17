@@ -1,3 +1,4 @@
+import 'package:barberia/paginas/cortes.dart';
 import 'package:flutter/material.dart';
 import 'package:barberia/paginas/login.dart';
 import 'package:barberia/paginas/registro.dart';
@@ -14,6 +15,6 @@ Map<String, WidgetBuilder> buildAppRoutes() {
     '/reservar': (BuildContext context) => new Reservar(),
     '/horario': (BuildContext context) => new Horario(),
     '/localizacion': (BuildContext context) => new Localizacion(),
-
+    '/cortes': (BuildContext context) => new Cortes(),
   };
 }

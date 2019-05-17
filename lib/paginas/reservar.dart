@@ -154,6 +154,9 @@ class _ReservarState extends State<Reservar> {
                                   .of(context)
                                   .showSnackBar(Snackbar(content: Text('Guardando datos')));
                             }
+
+                            // problemaaaaa con la fechaa
+
                         _submitForm(_nombreApellido.text.toString(), _dni.text.toString(), _fecha.text.toString(), _domicilio.text.toString(), _movil.text.toString(), _arreglo.text.toString()),
                         }
                       )),
@@ -168,9 +171,11 @@ class _ReservarState extends State<Reservar> {
         .showSnackBar(new SnackBar(content: Text(message)));
   }
 
-  _submitForm(String nombre, String dni, String fecha, String domicilio, String movil, String arreglo  ) {
-      if (nombre.length > 0 && dni.length > 0  && fecha.length > 0 && domicilio.length > 0 && movil.length > 0 && arreglo.length > 0) {
-        Reservas reservas = new Reservas(nombre.toString(), dni.toString(), fecha.toString(), domicilio.toString(), movil.toString(), arreglo.toString());
+  // problemaaaaaa con la fecha
+
+  _submitForm(String nombre, String dni, Timestamp fecha, String domicilio, String movil, String arreglo  ) {
+      if (nombre.length > 0 && dni.length > 0  &&  domicilio.length > 0 && movil.length > 0 && arreglo.length > 0) {
+        Reservas reservas = new Reservas(nombre.toString(), dni.toString(), fecha, domicilio.toString(), movil.toString(), arreglo.toString());
         _database.collection("reservas").add(reservas.toJson());
       }
   }

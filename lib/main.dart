@@ -76,6 +76,14 @@ class Inicio extends StatelessWidget {
                 print("has pulsado");
               },
             ),
+            Text('Cortes de pelo'),
+            IconButton(
+              icon: Icon(Icons.content_cut),
+              iconSize: 70,
+              onPressed: () {
+                Navigator.pushNamed(context, '/cortes');
+              },
+            ),
             Text('Horario'),
             IconButton(
               icon: Icon(Icons.calendar_today),
