@@ -4,5 +4,8 @@
     "products": "Products",
     "haircut": "haircut",
     "schedule": "schedule",
-    "location": "location"
+    "location": "location",
+    "schedules_2": "Hours from Monday to Friday",
+    "schedules_3": "Morning: 8:30 - 2:00 pm Afternoon: 5:00 - 8:00"
+
 }

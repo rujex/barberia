@@ -125,7 +125,7 @@ class _LoginPageState extends State<LoginPage>{
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 20.0),
-                      child: Text('Welcome to Todos app!',
+                      child: Text('¡Bienvenidos a la barberia APP!',
                         style: TextStyle(color: Color.fromARGB(255, 200, 200, 200)),
                       ),
                     )

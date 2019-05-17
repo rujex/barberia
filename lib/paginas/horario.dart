@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../rutas.dart';
+import '../translations.dart';
 
 class Horario extends StatelessWidget {
   @override
@@ -14,8 +16,8 @@ class Horario extends StatelessWidget {
               children: <Widget>[
                 const ListTile(
                   leading: Icon(Icons.calendar_today),
-                  title: Text('Horario de Lunes a Viernes'),
-                  subtitle: Text('Mañana: 8:30 - 14:00   Tarde: 17:00 - 20:00'),
+                  title: Text(Translations.of(context).text('schedules_2')),
+                  subtitle: Text(Translations.of(context).text('schedules_3')),
                 ),
                 ButtonTheme.bar(
                   // make buttons use the appropriate styles for cards
@@ -23,11 +25,15 @@ class Horario extends StatelessWidget {
                     children: <Widget>[
                       FlatButton(
                         child: const Text('Reservar cita'),
-                        onPressed: () {/* ... */},
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/reservar');
+                        },
                       ),
                       FlatButton(
                         child: const Text('Ubicación'),
-                        onPressed: () {/* ... */},
+                        onPressed: () {
+                           Navigator.pushNamed(context, '/localizacion');
+                        },
                       ),
                     ],
                   ),

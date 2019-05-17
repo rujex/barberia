@@ -4,5 +4,7 @@
     "products": "Productos",
     "haircut": "Cortes de pelo",
     "schedule": "Horario",
-    "location": "Localización"
+    "location": "Localización",
+    "schedules_2": "Horario de Lunes a Viernes",
+    "schedules_3": "Mañana: 8:30 - 14:00   Tarde: 17:00 - 20:00"
 }
