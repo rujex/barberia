@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:barberia/modelo/reservasModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../translations.dart';
+
 class Reservar extends StatefulWidget {
   @override
   _ReservarState createState() => _ReservarState();
@@ -44,7 +46,7 @@ class _ReservarState extends State<Reservar> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text('Reservar'),
+        title: Text(Translations.of(context).text('reserve')),
       ),
       body: SafeArea(
           top: false,

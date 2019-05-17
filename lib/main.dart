@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:barberia/paginas/registro.dart';
 import 'rutas.dart';
 import 'theme.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'translations.dart';
 
 void main() => runApp(Barberia());
 
@@ -35,6 +37,15 @@ class _BarberiaState extends State<Barberia> {
     return MaterialApp(
       title: 'Barberia App',
       theme: buildAppTheme(),
+      localizationsDelegates: [
+        const TranslationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+          const Locale('es', ''),
+          const Locale('en', ''),
+      ],
       home: rootPage,
       routes: buildAppRoutes(),
     );
@@ -53,14 +64,14 @@ class Inicio extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Barbería'),
+        title: Text(Translations.of(context).text('app_title')),
       ),
       
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Reservar'),
+            Text(Translations.of(context).text('reserve')),
             IconButton(
               icon: Icon(Icons.add_box),
               iconSize: 70,
@@ -68,7 +79,7 @@ class Inicio extends StatelessWidget {
                 Navigator.pushNamed(context, '/reservar');
               },
             ),
-            Text('Productos'),
+            Text(Translations.of(context).text('products')),
             IconButton(
               icon: Icon(Icons.add_shopping_cart),
               iconSize: 70,
@@ -76,7 +87,7 @@ class Inicio extends StatelessWidget {
                 print("has pulsado");
               },
             ),
-            Text('Cortes de pelo'),
+            Text(Translations.of(context).text('haircut')),
             IconButton(
               icon: Icon(Icons.content_cut),
               iconSize: 70,
@@ -84,7 +95,7 @@ class Inicio extends StatelessWidget {
                 Navigator.pushNamed(context, '/cortes');
               },
             ),
-            Text('Horario'),
+            Text(Translations.of(context).text('schedule')),
             IconButton(
               icon: Icon(Icons.calendar_today),
               iconSize: 70,
@@ -92,7 +103,7 @@ class Inicio extends StatelessWidget {
                 Navigator.pushNamed(context, '/horario');
               },
             ),
-            Text('Localización'),
+            Text(Translations.of(context).text('location')),
             IconButton(
               icon: Icon(Icons.location_on),
               iconSize: 70,
@@ -114,7 +125,7 @@ class Inicio extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text('Reservar'),
+              title: Text(Translations.of(context).text('reserve')),
               onTap: () {
                 Navigator.pushNamed(context, '/reservar');
               },
@@ -124,7 +135,7 @@ class Inicio extends StatelessWidget {
               height: 5.0,
             ),
             ListTile(
-              title: Text('Productos'),
+              title: Text(Translations.of(context).text('products')),
               onTap: () {
                 Navigator.pushNamed(context, '/productos');
               },
@@ -134,9 +145,15 @@ class Inicio extends StatelessWidget {
               height: 5.0,
             ),
             ListTile(
-              title: Text('Horario'),
+              title: Text(Translations.of(context).text('schedule')),
               onTap: () {
                 Navigator.pushNamed(context, '/horario');
+              },
+            ),
+            ListTile(
+              title: Text(Translations.of(context).text('haircut')),
+              onTap: () {
+                Navigator.pushNamed(context, '/cortes');
               },
             ),
             Divider(
@@ -144,7 +161,7 @@ class Inicio extends StatelessWidget {
               height: 5.0,
             ),
             ListTile(
-              title: Text('Localización'),
+              title: Text(Translations.of(context).text('location')),
               onTap: () {
                 Navigator.pushNamed(context, '/localizacion');
               },

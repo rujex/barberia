@@ -29,4 +29,8 @@ dev_dependencies:
 
 flutter:
 
+   assets:
+    locale/i18n_en.json
+    locale/i18n_fr.json
+
   uses-material-design: true
