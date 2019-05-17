@@ -10,12 +10,21 @@ class Reservar extends StatefulWidget {
 
 class _ReservarState extends State<Reservar> {
 
+  // Almaceno la información introducida en los input
+
   TextEditingController _nombreApellido;
   TextEditingController _dni;
   TextEditingController _fecha;
   TextEditingController _domicilio;
   TextEditingController _movil;
   TextEditingController _arreglo;
+
+  // Referencias a firebase, formulario y diseño
+
+  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final Firestore _database = new Firestore();
+
 
   @override
   void initState() {
@@ -28,12 +37,7 @@ class _ReservarState extends State<Reservar> {
     _arreglo = TextEditingController();
   }
 
-  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  final Firestore _database = new Firestore();
-
-  // Controladores de texto
-
+  
 
   @override
   Widget build(BuildContext context) {
@@ -52,31 +56,56 @@ class _ReservarState extends State<Reservar> {
                 children: <Widget>[
                   TextFormField(
                     controller: _nombreApellido,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                          return 'Escribe tu nombre y apellidos';
+                      }
+                    },
                     decoration: const InputDecoration(
                         icon: const Icon(Icons.person),
                         hintText: 'Escribe tu nombre y apellidos',
                         labelText: 'Nombre y apellidos'
                     ),
+                    keyboardType: TextInputType.text,
                   ),
                   TextFormField(
                     controller: _dni,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                          return 'Escribe el dni';
+                      }
+                    },
                     decoration: const InputDecoration(
                       icon: const Icon(Icons.assignment),
                       hintText: 'Escribe tu dni',
                       labelText: 'DNI',
                     ),
+                    maxLength: 9,
+                    inputFormatters: WhitelistingTextInputFormatter(RegExp("^(([A-Z]\d{8})|(\d{8}[A-Z]))$")),
+
                   ),
                   TextFormField(
                     controller: _fecha,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                          return 'Escribe la fecha';
+                      }
+                    },
                     decoration: const InputDecoration(
                       icon: const Icon(Icons.calendar_today),
                       hintText: 'Indica la fecha',
                       labelText: 'Fecha',
                     ),
                     keyboardType: TextInputType.datetime,
+                    initialDate: Timestamp.now()
                   ),
                   new TextFormField(
                     controller: _domicilio,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                          return 'Escribe el domicilio';
+                      }
+                    },
                     decoration: const InputDecoration(
                       icon: const Icon(Icons.location_on),
                       hintText: 'Escribe tu domicilio',
@@ -86,6 +115,11 @@ class _ReservarState extends State<Reservar> {
                   ),
                   TextFormField(
                     controller: _movil,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                          return 'Escribe tu numero de móvil';
+                      }
+                    },
                     decoration: const InputDecoration(
                       icon: const Icon(Icons.phone),
                       hintText: 'Escribe tu número de móvil',
@@ -99,6 +133,11 @@ class _ReservarState extends State<Reservar> {
                   ),
                   TextFormField(
                     controller: _arreglo,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                          return 'Escribe el corte de pelo';
+                      }
+                    },
                     decoration: const InputDecoration(
                       icon: const Icon(Icons.content_cut),
                       hintText: 'Escribe el tipo de arreglo',
@@ -109,7 +148,14 @@ class _ReservarState extends State<Reservar> {
                       padding: const EdgeInsets.only(left: 40.0, top: 20.0),
                       child: new RaisedButton(
                         child: const Text('Enviar'),
-                        onPressed: _submitForm(_nombreApellido.text.toString(), _dni.text.toString(), _fecha.text.toString(), _domicilio.text.toString(), _movil.text.toString(), _arreglo.text.toString()),
+                        onPressed: () {
+                            if (_formKey.currentState.validate()) {
+                              Scaffold
+                                  .of(context)
+                                  .showSnackBar(Snackbar(content: Text('Guardando datos')));
+                            }
+                        _submitForm(_nombreApellido.text.toString(), _dni.text.toString(), _fecha.text.toString(), _domicilio.text.toString(), _movil.text.toString(), _arreglo.text.toString()),
+                        }
                       )),
                 ],
               ))),

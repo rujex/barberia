@@ -5,7 +5,7 @@ class Reservas {
   String id;
   String nombre;
   String dni;
-  String fecha;
+  Timestamp fecha;
   String movil;
   String domicilio;
   String arreglo;
