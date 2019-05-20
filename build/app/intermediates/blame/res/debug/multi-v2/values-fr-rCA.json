@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/ruben/Documentos/barberia/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-fr-rCA/values-fr-rCA.xml",
+            "outputFile": "/home/ruben/Escritorio/flutter_login_demo-master/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-fr-rCA/values-fr-rCA.xml",
             "map": [
                 {
-                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.0.1.aar/c0224c254292af30f25463cba8a7ce44/res/values-fr-rCA/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "249,353,565,693,800,1030,1161,1308,1446,1700,1810,2026,2160,2379,2584,2683,2773",
-                        "endColumns": "103,211,127,106,229,130,146,137,253,109,215,133,218,204,98,89,108",
-                        "endOffsets": "352,564,692,799,1029,1160,1307,1445,1699,1809,2025,2159,2378,2583,2682,2772,2881"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,213,425,557,668,898,1033,1184,1546,1800,1914,2130,2268,2487,2696,2799,2893",
-                        "endColumns": "107,211,131,110,229,134,150,141,253,113,215,137,218,208,102,93,112",
-                        "endOffsets": "208,420,552,663,893,1028,1179,1321,1795,1909,2125,2263,2482,2691,2794,2888,3001"
-                    }
-                },
-                {
-                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/core-1.0.0-rc01.aar/304cd2f8a0d84da6963c56b5d146f09e/res/values-fr-rCA/values-fr-rCA.xml",
+                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/0881172adb4bdfa84bd52e50252b9e72/res/values-fr-rCA/values-fr-rCA.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.1.0.aar/3ae1c30f3fa999fca5a2757fb488422a/res/values-fr-rCA/values.xml",
+                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/046f471cb0be1d958592956e57966231/res/values-fr-rCA/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "249,353,565,693,800,1030,1161,1308,1446,1700,1810,2026,2160,2379,2584,2683,2773",
+                        "endColumns": "103,211,127,106,229,130,146,137,253,109,215,133,218,204,98,89,108",
+                        "endOffsets": "352,564,692,799,1029,1160,1307,1445,1699,1809,2025,2159,2378,2583,2682,2772,2881"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,213,425,557,668,898,1033,1184,1546,1800,1914,2130,2268,2487,2696,2799,2893",
+                        "endColumns": "107,211,131,110,229,134,150,141,253,113,215,137,218,208,102,93,112",
+                        "endOffsets": "208,420,552,663,893,1028,1179,1321,1795,1909,2125,2263,2482,2691,2794,2888,3001"
+                    }
+                },
+                {
+                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/bd86f67dcb6f4d57c653246f5b31a0b9/res/values-fr-rCA/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
