@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/ruben/Escritorio/flutter_login_demo-master/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-nl/values-nl.xml",
+            "outputFile": "/home/ruben/Escritorio/barberia/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-nl/values-nl.xml",
             "map": [
                 {
-                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/046f471cb0be1d958592956e57966231/res/values-nl/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "245,353,540,668,777,1003,1128,1277,1408,1645,1749,1949,2073,2295,2503,2597,2686",
-                        "endColumns": "107,186,127,108,225,124,148,130,236,103,199,123,221,207,93,88,103",
-                        "endOffsets": "352,539,667,776,1002,1127,1276,1407,1644,1748,1948,2072,2294,2502,2596,2685,2789"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,217,404,536,649,875,1004,1157,1494,1731,1839,2039,2167,2389,2601,2699,2792",
-                        "endColumns": "111,186,131,112,225,128,152,134,236,107,199,127,221,211,97,92,107",
-                        "endOffsets": "212,399,531,644,870,999,1152,1287,1726,1834,2034,2162,2384,2596,2694,2787,2895"
-                    }
-                },
-                {
-                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/0881172adb4bdfa84bd52e50252b9e72/res/values-nl/values-nl.xml",
+                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/core-1.0.0-rc01.aar/f260e601775defe1fce56c7f6714620e/res/values-nl/values-nl.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/bd86f67dcb6f4d57c653246f5b31a0b9/res/values-nl/values.xml",
+                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.0.1.aar/39f75d90108bff1e10a9f02eeae87b81/res/values-nl/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "245,353,540,668,777,1003,1128,1277,1408,1645,1749,1949,2073,2295,2503,2597,2686",
+                        "endColumns": "107,186,127,108,225,124,148,130,236,103,199,123,221,207,93,88,103",
+                        "endOffsets": "352,539,667,776,1002,1127,1276,1407,1644,1748,1948,2072,2294,2502,2596,2685,2789"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,217,404,536,649,875,1004,1157,1494,1731,1839,2039,2167,2389,2601,2699,2792",
+                        "endColumns": "111,186,131,112,225,128,152,134,236,107,199,127,221,211,97,92,107",
+                        "endOffsets": "212,399,531,644,870,999,1152,1287,1726,1834,2034,2162,2384,2596,2694,2787,2895"
+                    }
+                },
+                {
+                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.2.0.aar/87a1e4af156ef9ea7e6030ddf173c004/res/values-nl/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

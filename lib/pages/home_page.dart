@@ -1,5 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_login_demo/pages/haircut.dart';
+import 'package:flutter_login_demo/pages/reserves.dart';
+import 'package:flutter_login_demo/services/authentication.dart';
+
 
 void main() => runApp(Barberia());
 
@@ -7,6 +11,7 @@ class Barberia extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _BarberiaState();
 }
+
 
 class _BarberiaState extends State<Barberia> {
 
@@ -32,6 +37,8 @@ class Inicio extends StatelessWidget {
 
   final FirebaseUser user;
 
+  const Inicio({Key key, this.user, String userId, BaseAuth auth, onSignedOut}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +56,10 @@ class Inicio extends StatelessWidget {
               icon: Icon(Icons.add_box),
               iconSize: 70,
               onPressed: () {
-                Navigator.pushNamed(context, '/reservar');
+                 Navigator.push(context, new MaterialPageRoute(
+                  builder: (context) =>
+                    new Reserves()
+                ));
               },
             ),
             Text('Productos'),
@@ -65,7 +75,10 @@ class Inicio extends StatelessWidget {
               icon: Icon(Icons.content_cut),
               iconSize: 70,
               onPressed: () {
-                Navigator.pushNamed(context, '/cortes');
+                Navigator.push(context, new MaterialPageRoute(
+                  builder: (context) =>
+                    new Cortes()
+                ));
               },
             ),
             Text('Horario'),
@@ -91,8 +104,8 @@ class Inicio extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text(user.displayName),
-              accountEmail: Text(user.email),
+              accountName: Text('asdsa'),
+              accountEmail: Text('asdasd'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage('http://i.pravatar.cc/300'),
               ),

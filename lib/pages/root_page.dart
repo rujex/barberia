@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login_demo/pages/login_signup_page.dart';
 import 'package:flutter_login_demo/services/authentication.dart';
+import 'package:flutter_login_demo/pages/home_page.dart';
 
 class RootPage extends StatefulWidget {
   RootPage({this.auth});
@@ -36,14 +37,13 @@ class _RootPageState extends State<RootPage> {
   }
 
   void _onLoggedIn() {
-    widget.auth.getCurrentUser().then((user){
+    widget.auth.getCurrentUser().then((user) {
       setState(() {
         _userId = user.uid.toString();
       });
     });
     setState(() {
       authStatus = AuthStatus.LOGGED_IN;
-
     });
   }
 
@@ -77,15 +77,17 @@ class _RootPageState extends State<RootPage> {
         break;
       case AuthStatus.LOGGED_IN:
         if (_userId.length > 0 && _userId != null) {
-          return HomePage(
+          return Inicio(
             userId: _userId,
             auth: widget.auth,
             onSignedOut: _onSignedOut,
           );
-        } else return _buildWaitingScreen();
+        } else
+          return _buildWaitingScreen();
         break;
       default:
         return _buildWaitingScreen();
     }
   }
+
 }

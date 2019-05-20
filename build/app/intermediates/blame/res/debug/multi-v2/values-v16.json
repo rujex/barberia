@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/ruben/Escritorio/flutter_login_demo-master/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/home/ruben/Escritorio/barberia/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/0881172adb4bdfa84bd52e50252b9e72/res/values-v16/values-v16.xml",
+                    "source": "/home/ruben/.gradle/caches/transforms-1/files-1.1/core-1.0.0-rc01.aar/f260e601775defe1fce56c7f6714620e/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

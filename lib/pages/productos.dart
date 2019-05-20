@@ -7,13 +7,11 @@ import 'package:flutter_login_demo/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-
 /// This Widget is the main application widget.
 class Productos extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-        return MaterialApp(
+    return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Productos')),
         body: MyStatelessWidget(),
@@ -24,20 +22,20 @@ class Productos extends StatelessWidget {
 
 /// This is the stateless widget that the main application instantiates.
 class MyStatelessWidget extends StatelessWidget {
-
   MyStatelessWidget({Key key}) : super(key: key);
 
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Container(
-          padding: const EdgeInsets.all(10.0),
-          child: StreamBuilder<QuerySnapshot>(
-            stream: Firestore.instance.collection(Constants.productosCollectionId)
-              .snapshots(),
-            builder: (BuildContext context,
-              AsyncSnapshot<QuerySnapshot> snapshot) {
+            padding: const EdgeInsets.all(10.0),
+            child: StreamBuilder<QuerySnapshot>(
+              stream: Firestore.instance
+                  .collection(Constants.productosCollectionId)
+                  .snapshots(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError)
                   return new Text('Error: ${snapshot.error}');
                 switch (snapshot.connectionState) {
@@ -46,23 +44,25 @@ class MyStatelessWidget extends StatelessWidget {
                   default:
                     return new ListView(
                       children: snapshot.data.documents
-                        .map((DocumentSnapshot document) {
-                          return CustomCard(
+                          .map((DocumentSnapshot document) {
+                        return Card(
+                          child: ListTile(
                             title: document['nombre'],
-                            description: document['descripcion'],
-                            description: document['precio'],
-                          );
+                            subtitle: document['descripcion'],
+                          )
+                        );
                       }).toList(),
                     );
                 }
               },
             )),
-          ),
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: () {},
         tooltip: 'Add',
         child: Icon(Icons.add),
       ),
     );
   }
+
 }

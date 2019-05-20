@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
         title: 'Barbería app',
         debugShowCheckedModeBanner: false,
         theme: new ThemeData(
-          primarySwatch: Colors.blue,
+          brightness: Brightness.dark,
         ),
         home: new RootPage(auth: new Auth()));
   }
