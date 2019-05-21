@@ -30,7 +30,7 @@ Widget build(BuildContext context) {
           const ListTile(
             leading: Icon(Icons.album),
             title: Text('Horario de Lunes a Viernes'),
-            subtitle: Text('Mañana: 8:30 - 14:00   Tarde: 17:00 - 20:00'),
+            subtitle: Text('Mañana: 8:30 - 14:00'),
           ),
           ButtonTheme.bar( // make buttons use the appropriate styles for cards
             child: ButtonBar(

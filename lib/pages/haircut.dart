@@ -20,6 +20,9 @@ class Cortes extends StatelessWidget {
         appBar: AppBar(title: Text(_title)),
         body: MyStatelessWidget(),
       ),
+      theme: ThemeData(
+        brightness: Brightness.dark,
+      )
     );
   }
 }

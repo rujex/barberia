@@ -1,7 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login_demo/pages/haircut.dart';
+import 'package:flutter_login_demo/pages/localizacion.dart';
+import 'package:flutter_login_demo/pages/productos.dart';
 import 'package:flutter_login_demo/pages/reserves.dart';
+import 'package:flutter_login_demo/pages/schedule.dart';
 import 'package:flutter_login_demo/services/authentication.dart';
 
 
@@ -67,7 +70,10 @@ class Inicio extends StatelessWidget {
               icon: Icon(Icons.add_shopping_cart),
               iconSize: 70,
               onPressed: () {
-                print("has pulsado");
+                 Navigator.push(context, new MaterialPageRoute(
+                  builder: (context) =>
+                    new Productos()
+                ));
               },
             ),
             Text('Corte de pelo'),
@@ -86,7 +92,10 @@ class Inicio extends StatelessWidget {
               icon: Icon(Icons.calendar_today),
               iconSize: 70,
               onPressed: () {
-                Navigator.pushNamed(context, '/horario');
+                Navigator.push(context, new MaterialPageRoute(
+                  builder: (context) =>
+                    new Schedule()
+                ));
               },
             ),
             Text('Localización'),
@@ -94,7 +103,10 @@ class Inicio extends StatelessWidget {
               icon: Icon(Icons.location_on),
               iconSize: 70,
               onPressed: () {
-                Navigator.pushNamed(context, '/localizacion');
+                Navigator.push(context, new MaterialPageRoute(
+                  builder: (context) =>
+                    new Localizacion()
+                ));
               },
             ),
           ],
@@ -113,7 +125,10 @@ class Inicio extends StatelessWidget {
             ListTile(
               title: Text('Reservar'),
               onTap: () {
-                Navigator.pushNamed(context, '/reservar');
+                Navigator.push(context, new MaterialPageRoute(
+                  builder: (context) =>
+                    new Reserves()
+                ));
               },
             ),
             Divider(
@@ -123,7 +138,10 @@ class Inicio extends StatelessWidget {
             ListTile(
               title: Text('Productos'),
               onTap: () {
-                Navigator.pushNamed(context, '/productos');
+                Navigator.push(context, new MaterialPageRoute(
+                  builder: (context) =>
+                    new Productos()
+                ));
               },
             ),
             Divider(
@@ -133,13 +151,19 @@ class Inicio extends StatelessWidget {
             ListTile(
               title: Text('Horario'),
               onTap: () {
-                Navigator.pushNamed(context, '/horario');
+                Navigator.push(context, new MaterialPageRoute(
+                  builder: (context) =>
+                    new Schedule()
+                ));
               },
             ),
             ListTile(
               title: Text('Cortes de pelo'),
               onTap: () {
-                Navigator.pushNamed(context, '/cortes');
+                Navigator.push(context, new MaterialPageRoute(
+                  builder: (context) =>
+                    new Cortes()
+                ));
               },
             ),
             Divider(
@@ -147,9 +171,12 @@ class Inicio extends StatelessWidget {
               height: 5.0,
             ),
             ListTile(
-              title: Text('Location'),
+              title: Text('Localización'),
               onTap: () {
-                Navigator.pushNamed(context, '/localizacion');
+                Navigator.push(context, new MaterialPageRoute(
+                  builder: (context) =>
+                    new Localizacion()
+                ));
               },
             ),
           ],
