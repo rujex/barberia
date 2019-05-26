@@ -148,7 +148,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0-rc01] /home/
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.0.0-rc01] /home/ruben/.gradle/caches/transforms-1/files-1.1/core-1.0.0-rc01.aar/f260e601775defe1fce56c7f6714620e/AndroidManifest.xml:22:18-86
 	android:label
-		ADDED from /home/ruben/Escritorio/barberia/android/app/src/main/AndroidManifest.xml:17:9-43
+		ADDED from /home/ruben/Escritorio/barberia/android/app/src/main/AndroidManifest.xml:17:9-33
 	android:icon
 		ADDED from /home/ruben/Escritorio/barberia/android/app/src/main/AndroidManifest.xml:18:9-43
 	android:name

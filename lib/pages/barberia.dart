@@ -10,7 +10,12 @@ class Info extends StatelessWidget {
     return MaterialApp(
       title: _title,
       home: Scaffold(
-        appBar: AppBar(title: Text(_title)),
+        appBar: AppBar(
+          title: Text(_title),
+           leading: IconButton(icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context, false),),
+          )
+          ,
         body: MyStatelessWidget(),
       ),
       theme: ThemeData(
@@ -32,7 +37,9 @@ class MyStatelessWidget extends StatelessWidget {
       children: <Widget>[
 
 
-        Image.network('https://thebarbeer.co/wp-content/uploads/2018/05/barberia_05.jpg'),
+        Image.network(
+          'https://thebarbeer.co/wp-content/uploads/2018/05/barberia_05.jpg',
+          ),
 
 
         Padding
@@ -99,30 +106,52 @@ class MyStatelessWidget extends StatelessWidget {
          Padding(
         
           padding: EdgeInsets.only(
-            top: 20
+            top: 20,
+            left: 40,
           ),
           child: 
                 Row(
                   
-                  textDirection: TextDirection.ltr,
 
                   children: <Widget>[
 
 
-                    Icon(
-                           Icons.add,
-                           color: Colors.pink,
-                          size: 30.0,
+                    RaisedButton(
+                      onPressed: () {},
+                      child: Text('Instagram'),
+                      color: Colors.deepOrange,
+                      shape: Border.all(
+                        width: 3,
+                        color: Colors.white
+                        ), 
                     ),
-                    Icon(
-                           Icons.add,
-                           color: Colors.pink,
-                          size: 30.0,
+                    Padding(
+                      padding: EdgeInsets.only(
+                        right: 10
+                      ),
                     ),
-                    Icon(
-                           Icons.add,
-                           color: Colors.pink,
-                          size: 30.0,
+                    RaisedButton(
+                      onPressed: () {},
+                      child: Text('Twitter'),
+                      color: Colors.blue,
+                      shape: Border.all(
+                        width: 3,
+                        color: Colors.white
+                        ), 
+                    ),
+                     Padding(
+                      padding: EdgeInsets.only(
+                        right: 10
+                      ),
+                    ),
+                    RaisedButton(
+                      onPressed: () {},
+                      child: Text('Youtube'),
+                      color: Colors.red,
+                      shape: Border.all(
+                        width: 3,
+                        color: Colors.white
+                        ), 
                     ),
 
 
@@ -133,6 +162,35 @@ class MyStatelessWidget extends StatelessWidget {
 
         ),
         
+         Padding(
+        
+          padding: EdgeInsets.only(
+            top: 20
+          ),
+          child: 
+
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(Icons.location_on),
+
+                  Text
+                (
+                   'Avenida de Cadiz, Córdoba',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold
+                    ) ,
+                ) 
+
+              ],
+          )
+          
+         
+
+        ),
+
 
 
       ],
