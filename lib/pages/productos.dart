@@ -26,13 +26,34 @@ class Productos extends StatelessWidget {
   }
 }
 
+Future<bool> infoDialog(context) {
+  return showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('¿Estás seguro?'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Si'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: Text('No'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        );
+      });
+}
+
 /// This is the stateless widget that the main application instantiates.
 class MyStatelessWidget extends StatelessWidget {
   MyStatelessWidget({Key key}) : super(key: key);
-
-  prueba(){
-    print('asdas');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +106,9 @@ class MyStatelessWidget extends StatelessWidget {
                                 ),
                                 RaisedButton(
                                   child: Text('Comprar'),
-                                  onPressed: prueba,
+                                  onPressed: (){
+                                    infoDialog(context);
+                                  },
                                 )
                               ],
                             ),

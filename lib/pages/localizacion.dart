@@ -8,8 +8,10 @@ class Localizacion extends StatelessWidget {
     return Scaffold(
         body: FlutterMap(
           options: MapOptions(
-            center:  LatLng(37.8655938, -4.784703899999999),
-            zoom: 14.0,
+            center:  LatLng(37.8664807, -4.7838423),
+            minZoom: 15,
+            maxZoom: 15,
+            zoom: 15,
           ),
           layers: [
             new TileLayerOptions(
@@ -25,7 +27,7 @@ class Localizacion extends StatelessWidget {
                 new Marker(
                   width: 80.0,
                   height: 80.0,
-                  point: new LatLng(37.8655938, -4.784703899999999),
+                  point: new LatLng(37.8664807, -4.7838423),
                   builder: (ctx) =>
                   new Container(
                     child: IconButton(

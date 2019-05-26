@@ -58,12 +58,13 @@ final FirebaseUser user;
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Card(
-              margin: EdgeInsets.all(20.0),
+              margin: EdgeInsets.all(10.0),
               child: Column(
                 children: <Widget>[
-                  ListTile(
+                    ListTile(
+                    contentPadding: EdgeInsets.all(10),
                     leading: Icon(Icons.add),
-                    title: Text('Reservar'),
+                    title: Text('Reservar' ,),
                     subtitle: Text('Reserva tu cita por el mejor precio'),
                     onTap: () {
                       Navigator.push(context, new MaterialPageRoute(
@@ -76,10 +77,11 @@ final FirebaseUser user;
               ),
             ),
             Card(
-              margin: EdgeInsets.all(20.0),
+              margin: EdgeInsets.all(10.0),
               child: Column(
                 children: <Widget>[
                   ListTile(
+                    contentPadding: EdgeInsets.all(10),
                     leading: Icon(Icons.shopping_cart),
                     title: Text('Productos'),
                     subtitle: Text('Tenemos en venta productos de calidad para recoger en tienda'),
@@ -94,10 +96,11 @@ final FirebaseUser user;
               ),
             ),
             Card(
-              margin: EdgeInsets.all(20.0),
+              margin: EdgeInsets.all(10.0),
               child: Column(
                 children: <Widget>[
                   ListTile(
+                    contentPadding: EdgeInsets.all(10),
                     leading: Icon(Icons.content_cut),
                     title: Text('Cortes de pelo'),
                     subtitle: Text('Mira la variedad de cortes de pelo'),
@@ -112,10 +115,11 @@ final FirebaseUser user;
               ),
             ),
             Card(
-              margin: EdgeInsets.all(20.0),
+              margin: EdgeInsets.all(10.0),
               child: Column(
                 children: <Widget>[
                   ListTile(
+                    contentPadding: EdgeInsets.all(10),
                     leading: Icon(Icons.info),
                     title: Text('La barbería'),
                     subtitle: Text('Echa un vistazo a nuestro horario, teléfono y redes sociales'),
@@ -129,10 +133,11 @@ final FirebaseUser user;
                 ],
               ),
             ),  Card(
-              margin: EdgeInsets.all(20.0),
+              margin: EdgeInsets.all(10.0),
               child: Column(
                 children: <Widget>[
                   ListTile(
+                    contentPadding: EdgeInsets.all(10),
                     leading: Icon(Icons.location_on),
                     title: Text('Localización'),
                     subtitle: Text('Nos ubicamos en Córdoba'),
@@ -217,6 +222,7 @@ final FirebaseUser user;
 
       drawer: Drawer(
         child: ListView(
+          padding: EdgeInsets.only(top: 100),
           children: <Widget>[
             ListTile(
               title: Text('Reservar'),
