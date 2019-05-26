@@ -85,6 +85,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.0+2"
+  datetime_picker_formfield:
+    dependency: "direct main"
+    description:
+      name: datetime_picker_formfield
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.8"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -125,6 +132,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.8"
+  flutter_datetime_picker:
+    dependency: "direct main"
+    description:
+      name: flutter_datetime_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.1"
   flutter_image:
     dependency: transitive
     description:

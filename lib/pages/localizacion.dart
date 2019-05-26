@@ -9,7 +9,7 @@ class Localizacion extends StatelessWidget {
         body: FlutterMap(
           options: MapOptions(
             center:  LatLng(37.8655938, -4.784703899999999),
-            zoom: 13.0,
+            zoom: 14.0,
           ),
           layers: [
             new TileLayerOptions(

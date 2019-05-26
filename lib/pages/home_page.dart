@@ -1,11 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_login_demo/pages/barberia.dart';
 import 'package:flutter_login_demo/pages/haircut.dart';
 import 'package:flutter_login_demo/pages/localizacion.dart';
+import 'package:flutter_login_demo/pages/login_signup_page.dart';
 import 'package:flutter_login_demo/pages/productos.dart';
 import 'package:flutter_login_demo/pages/reserves.dart';
-import 'package:flutter_login_demo/pages/schedule.dart';
 import 'package:flutter_login_demo/services/authentication.dart';
+
 
 
 void main() => runApp(Barberia());
@@ -30,98 +33,191 @@ class _BarberiaState extends State<Barberia> {
       title: 'Barberia App',
     );
   }
+
+
+
 }
 
 class Inicio extends StatelessWidget {
 
+final FirebaseUser user;
+  const Inicio({Key key, this.user, String userId, BaseAuth auth, onSignedOut}) : super(key: key);
   //información del usuario logueado
 
   // var user = FirebaseAuth.instance.currentUser;
 
-  final FirebaseUser user;
-
-  const Inicio({Key key, this.user, String userId, BaseAuth auth, onSignedOut}) : super(key: key);
-
-
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Barbería app'),
       ),
-      
-      body: Center(
+      body: Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text('Reservar'),
-            IconButton(
-              icon: Icon(Icons.add_box),
-              iconSize: 70,
-              onPressed: () {
-                 Navigator.push(context, new MaterialPageRoute(
-                  builder: (context) =>
-                    new Reserves()
-                ));
-              },
+            Card(
+              margin: EdgeInsets.all(20.0),
+              child: Column(
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.add),
+                    title: Text('Reservar'),
+                    subtitle: Text('Reserva tu cita por el mejor precio'),
+                    onTap: () {
+                      Navigator.push(context, new MaterialPageRoute(
+                      builder: (context) =>
+                      new Reserves()
+                    ));
+                    },
+                  )
+                ],
+              ),
             ),
-            Text('Productos'),
-            IconButton(
-              icon: Icon(Icons.add_shopping_cart),
-              iconSize: 70,
-              onPressed: () {
-                 Navigator.push(context, new MaterialPageRoute(
-                  builder: (context) =>
-                    new Productos()
-                ));
-              },
+            Card(
+              margin: EdgeInsets.all(20.0),
+              child: Column(
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.shopping_cart),
+                    title: Text('Productos'),
+                    subtitle: Text('Tenemos en venta productos de calidad para recoger en tienda'),
+                    onTap: (){
+                       Navigator.push(context, new MaterialPageRoute(
+                        builder: (context) =>
+                       new Productos()
+                      ));
+                    },
+                  )
+                ],
+              ),
             ),
-            Text('Corte de pelo'),
-            IconButton(
-              icon: Icon(Icons.content_cut),
-              iconSize: 70,
-              onPressed: () {
-                Navigator.push(context, new MaterialPageRoute(
-                  builder: (context) =>
-                    new Cortes()
-                ));
-              },
+            Card(
+              margin: EdgeInsets.all(20.0),
+              child: Column(
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.content_cut),
+                    title: Text('Cortes de pelo'),
+                    subtitle: Text('Mira la variedad de cortes de pelo'),
+                    onTap: (){
+                      Navigator.push(context, new MaterialPageRoute(
+                      builder: (context) =>
+                         new Cortes()
+                     ));
+                    } ,
+                  )
+                ],
+              ),
             ),
-            Text('Horario'),
-            IconButton(
-              icon: Icon(Icons.calendar_today),
-              iconSize: 70,
-              onPressed: () {
-                Navigator.push(context, new MaterialPageRoute(
-                  builder: (context) =>
-                    new Schedule()
-                ));
-              },
-            ),
-            Text('Localización'),
-            IconButton(
-              icon: Icon(Icons.location_on),
-              iconSize: 70,
-              onPressed: () {
-                Navigator.push(context, new MaterialPageRoute(
-                  builder: (context) =>
-                    new Localizacion()
-                ));
-              },
-            ),
+            Card(
+              margin: EdgeInsets.all(20.0),
+              child: Column(
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.info),
+                    title: Text('La barbería'),
+                    subtitle: Text('Echa un vistazo a nuestro horario, teléfono y redes sociales'),
+                    onTap: (){
+                      Navigator.push(context, new MaterialPageRoute(
+                   builder: (context) =>
+                     new Info()
+                 ));
+                    },
+                  )
+                ],
+              ),
+            ),  Card(
+              margin: EdgeInsets.all(20.0),
+              child: Column(
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.location_on),
+                    title: Text('Localización'),
+                    subtitle: Text('Nos ubicamos en Córdoba'),
+                    onTap: () {
+                      Navigator.push(context, new MaterialPageRoute(
+                      builder: (context) =>
+                      new Localizacion()
+                 ));
+                    },
+                  )
+                ],
+              ),
+            )
           ],
+          ),
         ),
-      ),
+
+      // body: Center(
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: <Widget>[
+      //       Text('Reservar'),
+      //       IconButton(
+      //         icon: Icon(Icons.add_box),
+      //         iconSize: 70,
+      //         onPressed: () {
+      //            Navigator.push(context, new MaterialPageRoute(
+      //             builder: (context) =>
+      //               new Reserves()
+      //           ));
+      //         },
+      //       ),
+      //       Text('Productos'),
+      //       IconButton(
+      //         icon: Icon(Icons.add_shopping_cart),
+      //         iconSize: 70,
+      //         onPressed: () {
+      //            Navigator.push(context, new MaterialPageRoute(
+      //             builder: (context) =>
+      //               new Productos()
+      //           ));
+      //         },
+      //       ),
+      //       Text('Corte de pelo'),
+      //       IconButton(
+      //         icon: Icon(Icons.content_cut),
+      //         iconSize: 70,
+      //         onPressed: () {
+      //           Navigator.push(context, new MaterialPageRoute(
+      //             builder: (context) =>
+      //               new Cortes()
+      //           ));
+      //         },
+      //       ),
+      //       Text('Horario'),
+      //       IconButton(
+      //         icon: Icon(Icons.calendar_today),
+      //         iconSize: 70,
+      //         onPressed: () {
+      //           Navigator.push(context, new MaterialPageRoute(
+      //             builder: (context) =>
+      //               new Schedule()
+      //           ));
+      //         },
+      //       ),
+      //       Text('Localización'),
+      //       IconButton(
+      //         icon: Icon(Icons.location_on),
+      //         iconSize: 70,
+      //         onPressed: () {
+      //           Navigator.push(context, new MaterialPageRoute(
+      //             builder: (context) =>
+      //               new Localizacion()
+      //           ));
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      // ),
+
+
+
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text('asdsa'),
-              accountEmail: Text('asdasd'),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage('http://i.pravatar.cc/300'),
-              ),
-            ),
             ListTile(
               title: Text('Reservar'),
               onTap: () {
@@ -149,13 +245,17 @@ class Inicio extends StatelessWidget {
               height: 5.0,
             ),
             ListTile(
-              title: Text('Horario'),
+              title: Text('La barbería'),
               onTap: () {
                 Navigator.push(context, new MaterialPageRoute(
                   builder: (context) =>
-                    new Schedule()
+                    new Info()
                 ));
               },
+            ),
+            Divider(
+              color: Colors.black,
+              height: 5.0,
             ),
             ListTile(
               title: Text('Cortes de pelo'),
@@ -179,6 +279,19 @@ class Inicio extends StatelessWidget {
                 ));
               },
             ),
+            Divider(
+              color: Colors.black,
+              height: 5.0,
+            ),
+            ListTile(
+              title: Text('Cerrar sesión'),
+              onTap: () {
+                 Navigator.push(context, new MaterialPageRoute(
+                  builder: (context) =>
+                    new LoginSignUpPage()
+                ));
+                }
+            )
           ],
         ),
       ),

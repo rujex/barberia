@@ -17,7 +17,11 @@ class Cortes extends StatelessWidget {
     return MaterialApp(
       title: _title,
       home: Scaffold(
-        appBar: AppBar(title: Text(_title)),
+        appBar: AppBar(
+          title: Text(_title),
+          leading: IconButton(icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context, false),),
+          ),
         body: MyStatelessWidget(),
       ),
       theme: ThemeData(
@@ -41,16 +45,55 @@ class MyStatelessWidget extends StatelessWidget {
         if (snapshot.hasError) return new Text('Error: ${snapshot.error}');
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return new Text('Cargando...');
+            return Center(
+              child: Dialog(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    CircularProgressIndicator(),
+                    Text("Cargando"),
+                  ],
+                ),
+              ),
+            );
           default:
             return ListView(
               children:
                   snapshot.data.documents.map((DocumentSnapshot document) {
-                return new ListTile(
-                  title: new Text(document['nombre']),
-                  subtitle: new Text(document['precio'],
-                )
-                );
+                  return Card(
+                    child: Row(
+                      children: <Widget>[
+                        ClipOval (
+                            child: Image.network(
+                            document['imagen'],
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                            ),
+                        ),
+                        Container(
+                          width: 250,
+                          child: Padding(
+                            padding: EdgeInsets.all(50.0),
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  document['nombre'],
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    ),
+                                ),
+                              Text(
+                                  document['descripcion'],
+                                  style: TextStyle(fontSize: 12.0),
+                                ),
+                              ],
+                            ),
+                        )
+                        )
+                      ],
+                    ),
+                  );
               }).toList(),
             );
         }

@@ -13,9 +13,15 @@ class Productos extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Productos')),
+        appBar: AppBar(title: Text('Productos'),
+          leading: IconButton(icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context, false),),
+        ),
         body: MyStatelessWidget(),
       ),
+      theme: ThemeData(
+        brightness: Brightness.dark,
+      )
     );
   }
 }
@@ -23,6 +29,10 @@ class Productos extends StatelessWidget {
 /// This is the stateless widget that the main application instantiates.
 class MyStatelessWidget extends StatelessWidget {
   MyStatelessWidget({Key key}) : super(key: key);
+
+  prueba(){
+    print('asdas');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,27 +52,56 @@ class MyStatelessWidget extends StatelessWidget {
                   case ConnectionState.waiting:
                     return new Text('Loading...');
                   default:
-                    return new ListView(
-                      children: snapshot.data.documents
-                          .map((DocumentSnapshot document) {
-                        return Card(
-                          child: ListTile(
-                            title: document['nombre'],
-                            subtitle: document['descripcion'],
-                          )
-                        );
-                      }).toList(),
-                    );
+                  return Container(
+                    child: ListView(
+              children:
+                  snapshot.data.documents.map((DocumentSnapshot document) {
+                  return Card(
+                    child: Row(
+                      children: <Widget>[
+                        ClipOval (
+                            child: Image.network(
+                            document['imagen'],
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                            ),
+                        ),
+                        Container(
+                          width: 200,
+                          child: Padding(
+                            padding: EdgeInsets.all(50.0),
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  document['nombre'],
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    ),
+                                ),
+                              Text(
+                                  document['descripcion'],
+                                  style: TextStyle(fontSize: 10.0),
+                                ),
+                                RaisedButton(
+                                  child: Text('Comprar'),
+                                  onPressed: prueba,
+                                )
+                              ],
+                            ),
+                        )
+                        )
+                      ],
+                    ),
+                  );
+              }).toList(),
+                    )
+            );
                 }
               },
             )),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Add',
-        child: Icon(Icons.add),
-      ),
+
     );
   }
-
 }
