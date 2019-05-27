@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 /// This Widget is the main application widget.
 class Productos extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,30 +27,45 @@ class Productos extends StatelessWidget {
   }
 }
 
-Future<bool> infoDialog(context) {
-  return showDialog(
-      context: context,
-      barrierDismissible: true,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('¿Estás seguro?'),
-          actions: <Widget>[
-            FlatButton(
-              child: Text('Si'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            FlatButton(
-              child: Text('No'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            )
-          ],
-        );
+
+ guardarCompra() {
+
+    final CollectionReference reference = Firestore.instance.collection('compras');
+    Firestore.instance.runTransaction((Transaction transaction) async {
+      await reference.add({
+        "usuario": "aaa",
+        "producto": "bbb"
       });
-}
+    }
+    );
+    }
+
+ void mostrarDialogo(context){
+     showDialog(
+       context: context,
+       builder: (BuildContext context) {
+         return AlertDialog(
+           title: Text('Atención'),
+           content: Text('¿Estas seguro de comprar el producto?'),
+           actions: <Widget>[
+             FlatButton(
+               child: Text('Si'),
+               onPressed: () {
+                 guardarCompra();
+                 Navigator.of(context).pop();
+               },
+             ),
+             FlatButton(
+               child: Text('No'),
+               onPressed: () {
+                 Navigator.of(context).pop();
+               },
+             ),
+           ],
+         );
+       }
+     );
+  }
 
 /// This is the stateless widget that the main application instantiates.
 class MyStatelessWidget extends StatelessWidget {
@@ -71,9 +87,13 @@ class MyStatelessWidget extends StatelessWidget {
                   return new Text('Error: ${snapshot.error}');
                 switch (snapshot.connectionState) {
                   case ConnectionState.waiting:
-                    return new Text('Loading...');
-                  default:
-                  return Container(
+                        return CircularProgressIndicator();
+                  case ConnectionState.none:
+                        return CircularProgressIndicator();
+                  case ConnectionState.active:
+                      //  return CircularProgressIndicator();
+                  case ConnectionState.done:
+                        return Container(
                     child: ListView(
               children:
                   snapshot.data.documents.map((DocumentSnapshot document) {
@@ -107,7 +127,7 @@ class MyStatelessWidget extends StatelessWidget {
                                 RaisedButton(
                                   child: Text('Comprar'),
                                   onPressed: (){
-                                    infoDialog(context);
+                                    mostrarDialogo(context);
                                   },
                                 )
                               ],
@@ -120,6 +140,7 @@ class MyStatelessWidget extends StatelessWidget {
               }).toList(),
                     )
             );
+                  
                 }
               },
             )),
