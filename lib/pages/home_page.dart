@@ -7,6 +7,7 @@ import 'package:flutter_login_demo/pages/localizacion.dart';
 import 'package:flutter_login_demo/pages/login_signup_page.dart';
 import 'package:flutter_login_demo/pages/productos.dart';
 import 'package:flutter_login_demo/pages/reserves.dart';
+import 'package:flutter_login_demo/services/auth_provider.dart';
 import 'package:flutter_login_demo/services/authentication.dart';
 
 
@@ -14,6 +15,8 @@ import 'package:flutter_login_demo/services/authentication.dart';
 void main() => runApp(Barberia());
 
 class Barberia extends StatefulWidget {
+  const Barberia({this.onSignedOut});
+  final VoidCallback onSignedOut;
   @override
   State<StatefulWidget> createState() => _BarberiaState();
 }
@@ -21,9 +24,8 @@ class Barberia extends StatefulWidget {
 
 class _BarberiaState extends State<Barberia> {
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+ final FirebaseAuth _auth = FirebaseAuth.instance;
   FirebaseUser user;
-
 
   @override
   initState() {
@@ -37,11 +39,23 @@ class _BarberiaState extends State<Barberia> {
     setState(() {});
   }
 
+   _signOut() async {
+    await _auth.signOut();
+    runApp(
+      new MaterialApp(
+        home: new LoginSignUpPage(),
+      )
+
+    );
+  } 
+
+
+
 
   @override
   Widget build(BuildContext context) {
 
-     
+    
 
     return Scaffold(
       appBar: AppBar(
@@ -227,10 +241,7 @@ class _BarberiaState extends State<Barberia> {
             ListTile(
               title: Text('Cerrar sesión'),
               onTap: () {
-                 Navigator.push(context, new MaterialPageRoute(
-                  builder: (context) =>
-                    new LoginSignUpPage()
-                ));
+                _signOut();
                 }
             )
           ],
@@ -238,6 +249,7 @@ class _BarberiaState extends State<Barberia> {
       ),
     );
   }
+
 }
 
 

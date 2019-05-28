@@ -78,9 +78,7 @@ class _RootPageState extends State<RootPage> {
       case AuthStatus.LOGGED_IN:
         if (_userId.length > 0 && _userId != null) {
           return Barberia(
-           // userId: _userId,
-          //  auth: widget.auth,
-          //  onSignedOut: _onSignedOut,
+            onSignedOut: _onSignedOut,
           );
         } else
           return _buildWaitingScreen();

@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_login_demo/pages/home_page.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_login_demo/pages/misreservas.dart';
 
 class Reserves extends StatefulWidget {
   @override
@@ -121,7 +123,10 @@ class _State extends State<Reserves> {
                onPressed: () {
                  guardarReserva(fechaSelect, horaSelect);
                  print(horaSelect);
-                 Navigator.of(context).pop();
+                 Navigator.push(context, new MaterialPageRoute(
+                        builder: (context) =>
+                       new Barberia()
+                      ));
                },
              ),
              FlatButton(
@@ -154,6 +159,23 @@ class _State extends State<Reserves> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Reservar'),
+         actions: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Text('Mis citas'),
+            ),
+            IconButton(
+              iconSize: 35.0,
+              color: Colors.blue,
+              icon: new Icon(Icons.calendar_today),
+              onPressed: () {
+                    Navigator.push(context, new MaterialPageRoute(
+                        builder: (context) =>
+                       new Misreservas()
+                      ));
+              }
+            )
+          ],
       ),
       body: Container(
         padding: EdgeInsets.all(32.0),

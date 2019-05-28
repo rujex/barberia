@@ -6,6 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_login_demo/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_login_demo/pages/cesta.dart';
+import 'package:flutter_login_demo/pages/home_page.dart';
 
 /// This Widget is the main application widget.
 
@@ -16,16 +18,30 @@ class Productos extends StatefulWidget {
 
 class Interfaz extends State<Productos> {
 
-
- 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Productos'),
-          leading: IconButton(icon: Icon(Icons.arrow_back),
+          leading: IconButton(icon: Icon(Icons.arrow_back), 
           onPressed: () => Navigator.pop(context, false),),
+          actions: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Text('Cesta'),
+            ),
+            IconButton(
+              iconSize: 35.0,
+              color: Colors.blue,
+              icon: new Icon(Icons.shopping_cart),
+              onPressed: () {
+                    Navigator.push(context, new MaterialPageRoute(
+                        builder: (context) =>
+                       new Cesta()
+                      ));
+              }
+            )
+          ],
         ),
         body: MyStatelessWidget(),
       ),
@@ -58,6 +74,7 @@ class Interfaz extends State<Productos> {
 
     Firestore.instance.collection('compras').add(data);
 
+
     // final CollectionReference reference = Firestore.instance.collection('compras');
     // Firestore.instance.runTransaction((Transaction transaction) async {
     //   await reference.add({
@@ -80,7 +97,10 @@ class Interfaz extends State<Productos> {
                child: Text('Si'),
                onPressed: () {
                  guardarCompra(producto);
-                 Navigator.of(context).pop();
+                 Navigator.push(context, new MaterialPageRoute(
+                        builder: (context) =>
+                       new Barberia()
+                      ));
                },
              ),
              FlatButton(
