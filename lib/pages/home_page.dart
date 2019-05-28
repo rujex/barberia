@@ -21,33 +21,27 @@ class Barberia extends StatefulWidget {
 
 class _BarberiaState extends State<Barberia> {
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseUser user;
+
 
   @override
   initState() {
     super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Barberia App',
-    );
+    initUser();
   }
 
 
+  initUser() async {
+    user = await _auth.currentUser();
+    setState(() {});
+  }
 
-}
-
-class Inicio extends StatelessWidget {
-
-final FirebaseUser user;
-  const Inicio({Key key, this.user, String userId, BaseAuth auth, onSignedOut}) : super(key: key);
-  //información del usuario logueado
-
-  // var user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
+
+     
 
     return Scaffold(
       appBar: AppBar(
@@ -155,75 +149,16 @@ final FirebaseUser user;
           ),
         ),
 
-      // body: Center(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: <Widget>[
-      //       Text('Reservar'),
-      //       IconButton(
-      //         icon: Icon(Icons.add_box),
-      //         iconSize: 70,
-      //         onPressed: () {
-      //            Navigator.push(context, new MaterialPageRoute(
-      //             builder: (context) =>
-      //               new Reserves()
-      //           ));
-      //         },
-      //       ),
-      //       Text('Productos'),
-      //       IconButton(
-      //         icon: Icon(Icons.add_shopping_cart),
-      //         iconSize: 70,
-      //         onPressed: () {
-      //            Navigator.push(context, new MaterialPageRoute(
-      //             builder: (context) =>
-      //               new Productos()
-      //           ));
-      //         },
-      //       ),
-      //       Text('Corte de pelo'),
-      //       IconButton(
-      //         icon: Icon(Icons.content_cut),
-      //         iconSize: 70,
-      //         onPressed: () {
-      //           Navigator.push(context, new MaterialPageRoute(
-      //             builder: (context) =>
-      //               new Cortes()
-      //           ));
-      //         },
-      //       ),
-      //       Text('Horario'),
-      //       IconButton(
-      //         icon: Icon(Icons.calendar_today),
-      //         iconSize: 70,
-      //         onPressed: () {
-      //           Navigator.push(context, new MaterialPageRoute(
-      //             builder: (context) =>
-      //               new Schedule()
-      //           ));
-      //         },
-      //       ),
-      //       Text('Localización'),
-      //       IconButton(
-      //         icon: Icon(Icons.location_on),
-      //         iconSize: 70,
-      //         onPressed: () {
-      //           Navigator.push(context, new MaterialPageRoute(
-      //             builder: (context) =>
-      //               new Localizacion()
-      //           ));
-      //         },
-      //       ),
-      //     ],
-      //   ),
-      // ),
-
-
-
       drawer: Drawer(
         child: ListView(
-          padding: EdgeInsets.only(top: 100),
           children: <Widget>[
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage('http://i.pravatar.cc/300'),
+              ),
+              accountName: Text("${user?.displayName}"),
+              accountEmail: Text("${user?.email}"),
+            ),
             ListTile(
               title: Text('Reservar'),
               onTap: () {
@@ -304,3 +239,70 @@ final FirebaseUser user;
     );
   }
 }
+
+
+
+
+      // body: Center(
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: <Widget>[
+      //       Text('Reservar'),
+      //       IconButton(
+      //         icon: Icon(Icons.add_box),
+      //         iconSize: 70,
+      //         onPressed: () {
+      //            Navigator.push(context, new MaterialPageRoute(
+      //             builder: (context) =>
+      //               new Reserves()
+      //           ));
+      //         },
+      //       ),
+      //       Text('Productos'),
+      //       IconButton(
+      //         icon: Icon(Icons.add_shopping_cart),
+      //         iconSize: 70,
+      //         onPressed: () {
+      //            Navigator.push(context, new MaterialPageRoute(
+      //             builder: (context) =>
+      //               new Productos()
+      //           ));
+      //         },
+      //       ),
+      //       Text('Corte de pelo'),
+      //       IconButton(
+      //         icon: Icon(Icons.content_cut),
+      //         iconSize: 70,
+      //         onPressed: () {
+      //           Navigator.push(context, new MaterialPageRoute(
+      //             builder: (context) =>
+      //               new Cortes()
+      //           ));
+      //         },
+      //       ),
+      //       Text('Horario'),
+      //       IconButton(
+      //         icon: Icon(Icons.calendar_today),
+      //         iconSize: 70,
+      //         onPressed: () {
+      //           Navigator.push(context, new MaterialPageRoute(
+      //             builder: (context) =>
+      //               new Schedule()
+      //           ));
+      //         },
+      //       ),
+      //       Text('Localización'),
+      //       IconButton(
+      //         icon: Icon(Icons.location_on),
+      //         iconSize: 70,
+      //         onPressed: () {
+      //           Navigator.push(context, new MaterialPageRoute(
+      //             builder: (context) =>
+      //               new Localizacion()
+      //           ));
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      // ),
+

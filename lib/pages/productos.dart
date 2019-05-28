@@ -2,13 +2,22 @@
 
 // This sample shows creation of a [Card] widget that shows album information
 // and two actions.
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_login_demo/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 /// This Widget is the main application widget.
-class Productos extends StatelessWidget {
+
+class Productos extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => new Interfaz();
+}
+
+class Interfaz extends State<Productos> {
+
+
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -25,22 +34,41 @@ class Productos extends StatelessWidget {
       )
     );
   }
-}
+
+// StateModel appState;
+// final email = appState?.firebaseUserAuth?.email ?? '';
+// var user = FirebaseAuth.instance.currentUser();
+// var email = user.email;
 
 
- guardarCompra() {
 
-    final CollectionReference reference = Firestore.instance.collection('compras');
-    Firestore.instance.runTransaction((Transaction transaction) async {
-      await reference.add({
-        "usuario": "aaa",
-        "producto": "bbb"
-      });
+ guardarCompra(producto) async {
+
+   String userEmail;
+
+   FirebaseUser user = await FirebaseAuth.instance.currentUser();
+   userEmail = user.email;
+
+
+     var data = {
+        'usuario': userEmail,
+        'producto': producto
+    };
+
+
+    Firestore.instance.collection('compras').add(data);
+
+    // final CollectionReference reference = Firestore.instance.collection('compras');
+    // Firestore.instance.runTransaction((Transaction transaction) async {
+    //   await reference.add({
+    //     "usuario": getEmail(),
+    //     "producto": producto
+    //   });
+    // }
+    // );
     }
-    );
-    }
 
- void mostrarDialogo(context){
+ void mostrarDialogo(context, producto){
      showDialog(
        context: context,
        builder: (BuildContext context) {
@@ -51,7 +79,7 @@ class Productos extends StatelessWidget {
              FlatButton(
                child: Text('Si'),
                onPressed: () {
-                 guardarCompra();
+                 guardarCompra(producto);
                  Navigator.of(context).pop();
                },
              ),
@@ -67,8 +95,14 @@ class Productos extends StatelessWidget {
      );
   }
 
+
+}
+
 /// This is the stateless widget that the main application instantiates.
 class MyStatelessWidget extends StatelessWidget {
+
+  
+
   MyStatelessWidget({Key key}) : super(key: key);
 
   @override
@@ -127,7 +161,7 @@ class MyStatelessWidget extends StatelessWidget {
                                 RaisedButton(
                                   child: Text('Comprar'),
                                   onPressed: (){
-                                    mostrarDialogo(context);
+                                    Interfaz().mostrarDialogo(context, document['nombre']);
                                   },
                                 )
                               ],

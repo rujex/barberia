@@ -16,6 +16,7 @@ enum FormMode { LOGIN, SIGNUP }
 class _LoginSignUpPageState extends State<LoginSignUpPage> {
   final _formKey = new GlobalKey<FormState>();
 
+  String _nombre;
   String _email;
   String _password;
   String _errorMessage;
@@ -48,7 +49,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
           userId = await widget.auth.signIn(_email, _password);
           print('Signed in: $userId');
         } else {
-          userId = await widget.auth.signUp(_email, _password);
+          userId = await widget.auth.signUp(_nombre,_email, _password);
           widget.auth.sendEmailVerification();
           _showVerifyEmailSentDialog();
           print('Signed up user: $userId');
@@ -103,7 +104,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
     _isIos = Theme.of(context).platform == TargetPlatform.iOS;
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text('Inicio de sesión'),
+          title: new Text('Barberia App'),
         ),
         body: Stack(
           children: <Widget>[
@@ -151,6 +152,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
             shrinkWrap: true,
             children: <Widget>[
               _showLogo(),
+              _showNombreInput(),
               _showEmailInput(),
               _showPasswordInput(),
               _showPrimaryButton(),
@@ -186,7 +188,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
           radius: 48.0,
-          child: Image.asset('assets/flutter-icon.png'),
+          child: Image.asset('assets/logo.png'),
         ),
       ),
     );
@@ -194,7 +196,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
 
   Widget _showEmailInput() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
+      padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
       child: new TextFormField(
         maxLines: 1,
         keyboardType: TextInputType.emailAddress,
@@ -207,6 +209,24 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
             )),
         validator: (value) => value.isEmpty ? 'Email no puede estar vacío' : null,
         onSaved: (value) => _email = value,
+      ),
+    );
+  }
+
+   Widget _showNombreInput() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 0.0),
+      child: new TextFormField(
+        maxLines: 1,
+        keyboardType: TextInputType.text,
+        autofocus: false,
+        decoration: new InputDecoration(
+            hintText: 'Nombre',
+            icon: new Icon(
+              Icons.account_circle,
+              color: Colors.grey,
+            )),
+        onSaved: (value) => _nombre = value,
       ),
     );
   }

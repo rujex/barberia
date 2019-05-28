@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -13,6 +14,7 @@ class _State extends State<Reserves> {
   String horaSelect;
   Map<String,bool> reservas = new Map();
   CollectionReference reference = Firestore.instance.collection('reservas');
+  List listaHoras = [];
 
   _State() {
     inicializaReservas('05/22/2019', '08:30', 12);
@@ -21,11 +23,11 @@ class _State extends State<Reserves> {
   @override
   initState() {
     super.initState();
-    // consultaReservas('05/23/2020', '08:30', 12);
+     consultaReservas('05/22/2019', '08:30', 12);
   }
 
   inicializaReservas(fecha, hora_inicio, num_horas) {
-    DateFormat format = new DateFormat("MM/dd/yyy HH:mm");
+     DateFormat format = new DateFormat("MM/dd/yyy HH:mm");
     DateTime fecha_actual = format.parse("$fecha $hora_inicio");
     String hora_actual;
 
@@ -37,7 +39,7 @@ class _State extends State<Reserves> {
   }
 
   consultaReservas(fecha, hora_inicio, num_horas) async{
-    DateFormat format = new DateFormat("MM/dd/yyy HH:mm");
+   DateFormat format = new DateFormat("MM/dd/yyy HH:mm");
     DateTime fecha_actual = format.parse("$fecha $hora_inicio");
     print(fecha_actual.toIso8601String());
     String hora_actual;
@@ -55,9 +57,17 @@ class _State extends State<Reserves> {
   }
 
   
-  guardarReserva(fecha, hora) {
+  guardarReserva(fecha, hora) async {
+
+  String userEmail;
+
+   FirebaseUser user = await FirebaseAuth.instance.currentUser();
+   userEmail = user.email;
+
+   
     Firestore.instance.runTransaction((Transaction transaction) async {
       await reference.add({
+        "usuario": userEmail,
         "fecha": fecha,
         "hora": hora
       });
@@ -77,6 +87,7 @@ class _State extends State<Reserves> {
     for(var i=0; i < num_horas; i++) {
       hora_actual = DateFormat("HH:mm").format(fecha_actual);
       horaSelect = hora_actual;
+      listaHoras.add(horaSelect);
 
       lista.add(Card(
         child:
@@ -85,7 +96,9 @@ class _State extends State<Reserves> {
             enabled: !reservas[hora_actual],
             onTap: ()
             {
-               mostrarDialogo(fecha_actual, fechaSelect, horaSelect);
+              
+               mostrarDialogo(fecha_actual, fechaSelect, listaHoras.elementAt(i));
+               print(fecha_actual);
             },
           ),
       ),
@@ -107,6 +120,7 @@ class _State extends State<Reserves> {
                child: Text('Si'),
                onPressed: () {
                  guardarReserva(fechaSelect, horaSelect);
+                 print(horaSelect);
                  Navigator.of(context).pop();
                },
              ),
