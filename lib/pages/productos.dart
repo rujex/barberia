@@ -86,11 +86,20 @@ class Interfaz extends State<Productos> {
     // );
     }
 
-//  void notificacion(context){
-//    SnackBar(
-//      content: Text('holaaa'),
-//    )
-//  }
+ void notificacion(context){
+
+   showDialog(  
+       context: context,
+       builder: (BuildContext context) {
+         return AlertDialog(
+           content: Text('La compra ha sido realizada con éxito'),
+           actions: <Widget>[
+             FlatButton(child: Text('Aceptar'), onPressed: () {Navigator.of(context).pop();},)
+           ],
+         );
+       }
+     );
+ }
 
 
  void mostrarDialogo(context, producto){
@@ -106,11 +115,12 @@ class Interfaz extends State<Productos> {
                onPressed: () {
                  guardarCompra(producto);
                  Navigator.of(context).pop();
-
                  Navigator.push(context, new MaterialPageRoute(
                         builder: (context) =>
                        new Cesta()
                       ));
+                      notificacion(context);
+                      
                },
              ),
              FlatButton(

@@ -32,7 +32,7 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:icon="@mipmap/icon"
-        android:label="barberia" >
+        android:label="Barberia" >
         <activity
             android:name="com.example.flutterlogindemo.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
