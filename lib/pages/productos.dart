@@ -174,6 +174,9 @@ class MyStatelessWidget extends StatelessWidget {
                   return Card(
                     child: Row(
                       children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 10),
+                        ),
                         ClipOval (
                             child: Image.network(
                             document['imagen'],
@@ -183,7 +186,7 @@ class MyStatelessWidget extends StatelessWidget {
                             ),
                         ),
                         Container(
-                          width: 200,
+                          width: 210,
                           child: Padding(
                             padding: EdgeInsets.all(50.0),
                             child: Column(
@@ -194,12 +197,18 @@ class MyStatelessWidget extends StatelessWidget {
                                     fontSize: 17.0,
                                     ),
                                 ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 5, bottom: 3),
+                                ),
                               Text(
                                   document['descripcion'],
                                   style: TextStyle(fontSize: 10.0),
                                 ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 5, bottom: 3),
+                                ),
                                 RaisedButton(
-                                  child: Text(document['precio'] + '€' + ' Comprar'),
+                                  child: Text(document['precio'] + '€' + ' Comprar', textAlign: TextAlign.center,),
                                   onPressed: (){
                                     Interfaz().mostrarDialogo(context, document['nombre']);
                                   },

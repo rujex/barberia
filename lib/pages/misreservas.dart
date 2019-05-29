@@ -44,11 +44,12 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
        builder: (BuildContext context) {
          return AlertDialog(
            title: Text('Atención'),
-           content: Text('¿Estas seguro de reservar?'),
+           content: Text('¿Estas seguro de cancelar la reserva?'),
            actions: <Widget>[
              FlatButton(
                child: Text('Si'),
                onPressed: () {
+                 Navigator.of(context).pop();
                  Navigator.of(context).pop();
                  eliminarReserva(doc);
                },

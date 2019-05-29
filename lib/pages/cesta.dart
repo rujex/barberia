@@ -33,15 +33,37 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
     setState(() {});
   }
 
-  Future<void> _signOut(BuildContext context) async {
-    try {
-      final BaseAuth auth = AuthProvider.of(context).auth;
-      await auth.signOut();
-    } catch (e) {
-      print(e);
-    }
+  eliminarProducto(doc){
+    Firestore.instance.collection('compras').document(doc).delete();
   }
 
+
+void mostrarDialogo(doc){
+     showDialog(
+       context: context,
+       builder: (BuildContext context) {
+         return AlertDialog(
+           title: Text('Atención'),
+           content: Text('¿Estas seguro de eliminar la compra?'),
+           actions: <Widget>[
+             FlatButton(
+               child: Text('Si'),
+               onPressed: () {
+                 Navigator.of(context).pop();
+                 eliminarProducto(doc);
+               },
+             ),
+             FlatButton(
+               child: Text('No'),
+               onPressed: () {
+                 Navigator.of(context).pop();
+               },
+             ),
+           ],
+         );
+       }
+     );
+  }
 
 
   @override
@@ -82,15 +104,23 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
                       children: <Widget>[
                         Container(
                           child: Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Center(
-                              child:
+                            padding: EdgeInsets.all(10),
+                            child: Row(
+                              children: <Widget>[
                                 Text(
-                                  document['producto'],
+                                  document['producto'] + '                   ',
                                   style: TextStyle(
                                     fontSize: 15.0,
                                   ),
                                 ),
+                                IconButton(
+                                  alignment: Alignment.centerRight,
+                                  icon: Icon(Icons.delete),
+                                  onPressed: () {
+                                     mostrarDialogo(document.documentID);
+                                  },    
+                                )
+                              ]
                             ),
                         )
                         )
