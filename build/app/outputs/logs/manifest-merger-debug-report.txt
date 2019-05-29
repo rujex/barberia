@@ -150,7 +150,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0-rc01] /home/
 	android:label
 		ADDED from /home/ruben/Escritorio/barberia/android/app/src/main/AndroidManifest.xml:17:9-33
 	android:icon
-		ADDED from /home/ruben/Escritorio/barberia/android/app/src/main/AndroidManifest.xml:18:9-43
+		ADDED from /home/ruben/Escritorio/barberia/android/app/src/main/AndroidManifest.xml:18:9-36
 	android:name
 		ADDED from /home/ruben/Escritorio/barberia/android/app/src/main/AndroidManifest.xml:16:9-57
 activity#com.example.flutterlogindemo.MainActivity

@@ -12,7 +12,7 @@ class Reserves extends StatefulWidget {
 }
 
 class _State extends State<Reserves> {
-  String fecha;
+  String fecha = '';
   String horaSelect;
   Map<String,bool> reservas = new Map();
   CollectionReference reference = Firestore.instance.collection('reservas');
@@ -25,7 +25,7 @@ class _State extends State<Reserves> {
   @override
   initState() {
     super.initState();
-     consultaReservas('05/22/2019', '08:30', 12);
+    consultaReservas('05/22/2019', '08:30', 12);
   }
 
   inicializaReservas(fecha, hora_inicio, num_horas) {
@@ -58,6 +58,12 @@ class _State extends State<Reserves> {
     }
   }
 
+bool pintaHora(hora_actual) {
+  if (fecha=='')
+    return false;
+  else
+    return !reservas[hora_actual];
+}
   
   guardarReserva(fecha, hora) async {
 
@@ -97,8 +103,7 @@ class _State extends State<Reserves> {
             title: Text(hora_actual),
             enabled: !reservas[hora_actual],
             onTap: ()
-            {
-              
+            {              
                mostrarDialogo(fecha_actual, fechaSelect, listaHoras.elementAt(i));
                print(fecha_actual);
             },
@@ -123,9 +128,10 @@ class _State extends State<Reserves> {
                onPressed: () {
                  guardarReserva(fechaSelect, horaSelect);
                  print(horaSelect);
+                 Navigator.of(context).pop();
                  Navigator.push(context, new MaterialPageRoute(
                         builder: (context) =>
-                       new Barberia()
+                       new Misreservas()
                       ));
                },
              ),
@@ -156,6 +162,9 @@ class _State extends State<Reserves> {
   
 @override
   Widget build(BuildContext context) {
+
+  DateTime fechaPicker = DateTime.now();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Reservar'),
@@ -185,7 +194,7 @@ class _State extends State<Reserves> {
                 onPressed: () {
                   DatePicker.showDatePicker(context,
                       showTitleActions: true,
-                      minTime: DateTime(2019, 1, 1),
+                      minTime: DateTime.now(),
                       maxTime: DateTime(2019, 12, 31), onChanged: (date) {
                     print('change $date');
                   }, onConfirm: (date) {
@@ -196,15 +205,20 @@ class _State extends State<Reserves> {
                     });
                   }, currentTime: DateTime.now(), locale: LocaleType.es);
                 },
-                child: Text(
+                child: Column(children: <Widget>[
+                  Text(fecha),
+                    Text(
                   'Selecciona la fecha',
                   style: TextStyle(color: Colors.white
                                   ),
-                )),
+                )
+                ],) 
+                
+                ),
             Expanded(
               child: ListView(
                   padding: EdgeInsets.all(8.0),
-                  children: creaHoras('05/23/2019', fecha, horaSelect, '08:30', 12))
+                  children: creaHoras('01/01/1990', fecha, horaSelect, '08:30', 12))
             )
           ],
         ),

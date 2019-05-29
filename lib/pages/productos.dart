@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login_demo/pages/cesta.dart';
 import 'package:flutter_login_demo/pages/home_page.dart';
+import 'package:flutter_login_demo/pages/misreservas.dart';
 
 /// This Widget is the main application widget.
 
@@ -85,6 +86,13 @@ class Interfaz extends State<Productos> {
     // );
     }
 
+//  void notificacion(context){
+//    SnackBar(
+//      content: Text('holaaa'),
+//    )
+//  }
+
+
  void mostrarDialogo(context, producto){
      showDialog(
        context: context,
@@ -97,9 +105,11 @@ class Interfaz extends State<Productos> {
                child: Text('Si'),
                onPressed: () {
                  guardarCompra(producto);
+                 Navigator.of(context).pop();
+
                  Navigator.push(context, new MaterialPageRoute(
                         builder: (context) =>
-                       new Barberia()
+                       new Cesta()
                       ));
                },
              ),
@@ -179,7 +189,7 @@ class MyStatelessWidget extends StatelessWidget {
                                   style: TextStyle(fontSize: 10.0),
                                 ),
                                 RaisedButton(
-                                  child: Text('Comprar'),
+                                  child: Text(document['precio'] + '€' + ' Comprar'),
                                   onPressed: (){
                                     Interfaz().mostrarDialogo(context, document['nombre']);
                                   },

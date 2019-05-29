@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -54,10 +56,10 @@ class _BarberiaState extends State<Barberia> {
 
   @override
   Widget build(BuildContext context) {
-
-    
+    final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text('Barbería app'),
       ),
@@ -76,9 +78,9 @@ class _BarberiaState extends State<Barberia> {
                     subtitle: Text('Reserva tu cita por el mejor precio'),
                     onTap: () {
                       Navigator.push(context, new MaterialPageRoute(
-                      builder: (context) =>
-                      new Reserves()
-                    ));
+                        builder: (context) =>
+                        new Reserves()
+                      ));
                     },
                   )
                 ],
@@ -170,8 +172,7 @@ class _BarberiaState extends State<Barberia> {
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage('http://i.pravatar.cc/300'),
               ),
-              accountName: Text("${user?.displayName}"),
-              accountEmail: Text("${user?.email}"),
+              accountEmail: Text("${user?.email}"), accountName: null,
             ),
             ListTile(
               title: Text('Reservar'),
@@ -242,6 +243,7 @@ class _BarberiaState extends State<Barberia> {
               title: Text('Cerrar sesión'),
               onTap: () {
                 _signOut();
+                exit(0);
                 }
             )
           ],

@@ -16,7 +16,6 @@ enum FormMode { LOGIN, SIGNUP }
 class _LoginSignUpPageState extends State<LoginSignUpPage> {
   final _formKey = new GlobalKey<FormState>();
 
-  String _nombre;
   String _email;
   String _password;
   String _errorMessage;
@@ -49,7 +48,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
           userId = await widget.auth.signIn(_email, _password);
           print('Signed in: $userId');
         } else {
-          userId = await widget.auth.signUp(_nombre,_email, _password);
+          userId = await widget.auth.signUp(_email, _password);
           widget.auth.sendEmailVerification();
           _showVerifyEmailSentDialog();
           print('Signed up user: $userId');
@@ -66,10 +65,10 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
         print('Error: $e');
         setState(() {
           _isLoading = false;
-          if (_isIos) {
-            _errorMessage = e.details;
-          } else
-            _errorMessage = e.message;
+   //       if (_isIos) {
+   //         _errorMessage = e.details;
+   //       } else
+   //         _errorMessage = e.message;
         });
       }
     }
@@ -151,7 +150,6 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
             shrinkWrap: true,
             children: <Widget>[
               _showLogo(),
-              _showNombreInput(),
               _showEmailInput(),
               _showPasswordInput(),
               _showPrimaryButton(),
@@ -208,24 +206,6 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
             )),
         validator: (value) => value.isEmpty ? 'Email no puede estar vacío' : null,
         onSaved: (value) => _email = value,
-      ),
-    );
-  }
-
-   Widget _showNombreInput() {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 0.0),
-      child: new TextFormField(
-        maxLines: 1,
-        keyboardType: TextInputType.text,
-        autofocus: false,
-        decoration: new InputDecoration(
-            hintText: 'Nombre',
-            icon: new Icon(
-              Icons.account_circle,
-              color: Colors.grey,
-            )),
-        onSaved: (value) => _nombre = value,
       ),
     );
   }
