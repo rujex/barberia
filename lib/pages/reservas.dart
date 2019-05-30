@@ -22,7 +22,7 @@ class _State extends State<Reserves> {
   String horaSelect;
   String hora_actual;
   Map<String, bool> reservas = new Map();
-  CollectionReference reference = Firestore.instance.collection('reservas');
+  CollectionReference reference = Firestore.instance.collection(Constants.reservesCollectionId);
   List listaHoras = [];
 
   _State() {
@@ -172,7 +172,7 @@ class _State extends State<Reserves> {
   // a la fecha pasada por parametro y la hora igual a la hora pasada por parametro
   Future<bool> isHora(fecha, hora) async {
     return Firestore.instance
-        .collection('reservas')
+        .collection(Constants.reservesCollectionId)
         .where("fecha", isEqualTo: fecha)
         .where("hora", isEqualTo: hora)
         .getDocuments()
