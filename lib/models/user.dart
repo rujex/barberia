@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+// Modelo de datos del usuario
 class User {
   final String userID;
   final String firstName;

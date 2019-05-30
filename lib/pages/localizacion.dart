@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
-
+// Clase que implementa un mapa para mostrar la ubicación de la barberia
 class Localizacion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

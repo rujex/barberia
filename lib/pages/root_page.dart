@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_login_demo/pages/login_signup_page.dart';
+import 'package:flutter_login_demo/pages/login_signup.dart';
 import 'package:flutter_login_demo/services/authentication.dart';
 import 'package:flutter_login_demo/pages/home_page.dart';
-
+// Clase que controla la autenticación del usuario
 class RootPage extends StatefulWidget {
   RootPage({this.auth});
 
@@ -11,7 +11,7 @@ class RootPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _RootPageState();
 }
-
+// enumeración del estado de la autenticación
 enum AuthStatus {
   NOT_DETERMINED,
   NOT_LOGGED_IN,
@@ -35,7 +35,7 @@ class _RootPageState extends State<RootPage> {
       });
     });
   }
-
+  // login y se cambia el estado a logueado
   void _onLoggedIn() {
     widget.auth.getCurrentUser().then((user) {
       setState(() {
@@ -46,14 +46,14 @@ class _RootPageState extends State<RootPage> {
       authStatus = AuthStatus.LOGGED_IN;
     });
   }
-
+  // se cambia el estado a no logueado
   void _onSignedOut() {
     setState(() {
       authStatus = AuthStatus.NOT_LOGGED_IN;
       _userId = "";
     });
   }
-
+  // crea un loading
   Widget _buildWaitingScreen() {
     return Scaffold(
       body: Container(
@@ -62,7 +62,7 @@ class _RootPageState extends State<RootPage> {
       ),
     );
   }
-
+  // construye el interfaz
   @override
   Widget build(BuildContext context) {
     switch (authStatus) {

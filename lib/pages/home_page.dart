@@ -4,17 +4,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login_demo/pages/barberia.dart';
-import 'package:flutter_login_demo/pages/haircut.dart';
+import 'package:flutter_login_demo/pages/corte.dart';
 import 'package:flutter_login_demo/pages/localizacion.dart';
-import 'package:flutter_login_demo/pages/login_signup_page.dart';
+import 'package:flutter_login_demo/pages/login_signup.dart';
 import 'package:flutter_login_demo/pages/productos.dart';
-import 'package:flutter_login_demo/pages/reserves.dart';
-import 'package:flutter_login_demo/services/auth_provider.dart';
-import 'package:flutter_login_demo/services/authentication.dart';
-
-
+import 'package:flutter_login_demo/pages/reservas.dart';
 
 void main() => runApp(Barberia());
+
+/*
+* Ventana principal compuesto por un menu y una lista que te dirige a las diferentes ventanas
+* de la aplicación
+*/
 
 class Barberia extends StatefulWidget {
   const Barberia({this.onSignedOut});
@@ -23,10 +24,8 @@ class Barberia extends StatefulWidget {
   State<StatefulWidget> createState() => _BarberiaState();
 }
 
-
 class _BarberiaState extends State<Barberia> {
-
- final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   FirebaseUser user;
 
   @override
@@ -35,28 +34,24 @@ class _BarberiaState extends State<Barberia> {
     initUser();
   }
 
-
   initUser() async {
     user = await _auth.currentUser();
     setState(() {});
   }
 
-   _signOut() async {
+  // Cerrar sesión
+  _signOut() async {
     await _auth.signOut();
-    runApp(
-      new MaterialApp(
-        home: new LoginSignUpPage(),
-      )
+    runApp(new MaterialApp(
+      home: new LoginSignUpPage(),
+    ));
+  }
 
-    );
-  } 
-
-
-
-
+  // muestra el menu y una lista con varios enlaces a otras ventanas
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
 
     return Scaffold(
       key: _scaffoldKey,
@@ -71,16 +66,18 @@ class _BarberiaState extends State<Barberia> {
               margin: EdgeInsets.all(10.0),
               child: Column(
                 children: <Widget>[
-                    ListTile(
+                  ListTile(
                     contentPadding: EdgeInsets.all(10),
                     leading: Icon(Icons.add),
-                    title: Text('Reservar' ,),
+                    title: Text(
+                      'Reservar',
+                    ),
                     subtitle: Text('Reserva tu cita por el mejor precio'),
                     onTap: () {
-                      Navigator.push(context, new MaterialPageRoute(
-                        builder: (context) =>
-                        new Reserves()
-                      ));
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new Reserves()));
                     },
                   )
                 ],
@@ -94,12 +91,13 @@ class _BarberiaState extends State<Barberia> {
                     contentPadding: EdgeInsets.all(10),
                     leading: Icon(Icons.shopping_cart),
                     title: Text('Productos'),
-                    subtitle: Text('Tenemos en venta productos de calidad para recoger en tienda'),
-                    onTap: (){
-                       Navigator.push(context, new MaterialPageRoute(
-                        builder: (context) =>
-                       new Productos()
-                      ));
+                    subtitle: Text(
+                        'Tenemos en venta productos de calidad para recoger en tienda'),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new Productos()));
                     },
                   )
                 ],
@@ -114,12 +112,12 @@ class _BarberiaState extends State<Barberia> {
                     leading: Icon(Icons.content_cut),
                     title: Text('Cortes de pelo'),
                     subtitle: Text('Mira la variedad de cortes de pelo'),
-                    onTap: (){
-                      Navigator.push(context, new MaterialPageRoute(
-                      builder: (context) =>
-                         new Cortes()
-                     ));
-                    } ,
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new Cortes()));
+                    },
                   )
                 ],
               ),
@@ -132,17 +130,19 @@ class _BarberiaState extends State<Barberia> {
                     contentPadding: EdgeInsets.all(10),
                     leading: Icon(Icons.info),
                     title: Text('La barbería'),
-                    subtitle: Text('Echa un vistazo a nuestro horario, teléfono y redes sociales'),
-                    onTap: (){
-                      Navigator.push(context, new MaterialPageRoute(
-                   builder: (context) =>
-                     new Info()
-                 ));
+                    subtitle: Text(
+                        'Echa un vistazo a nuestro horario, teléfono y redes sociales'),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new Info()));
                     },
                   )
                 ],
               ),
-            ),  Card(
+            ),
+            Card(
               margin: EdgeInsets.all(10.0),
               child: Column(
                 children: <Widget>[
@@ -152,19 +152,18 @@ class _BarberiaState extends State<Barberia> {
                     title: Text('Localización'),
                     subtitle: Text('Nos ubicamos en Córdoba'),
                     onTap: () {
-                      Navigator.push(context, new MaterialPageRoute(
-                      builder: (context) =>
-                      new Localizacion()
-                 ));
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new Localizacion()));
                     },
                   )
                 ],
               ),
             )
           ],
-          ),
         ),
-
+      ),
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
@@ -172,15 +171,16 @@ class _BarberiaState extends State<Barberia> {
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage('http://i.pravatar.cc/300'),
               ),
-              accountEmail: Text("${user?.email}"), accountName: null,
+              accountEmail: Text("${user?.email}"),
+              accountName: null,
             ),
             ListTile(
               title: Text('Reservar'),
               onTap: () {
-                Navigator.push(context, new MaterialPageRoute(
-                  builder: (context) =>
-                    new Reserves()
-                ));
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => new Reserves()));
               },
             ),
             Divider(
@@ -190,10 +190,10 @@ class _BarberiaState extends State<Barberia> {
             ListTile(
               title: Text('Productos'),
               onTap: () {
-                Navigator.push(context, new MaterialPageRoute(
-                  builder: (context) =>
-                    new Productos()
-                ));
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => new Productos()));
               },
             ),
             Divider(
@@ -203,10 +203,8 @@ class _BarberiaState extends State<Barberia> {
             ListTile(
               title: Text('La barbería'),
               onTap: () {
-                Navigator.push(context, new MaterialPageRoute(
-                  builder: (context) =>
-                    new Info()
-                ));
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) => new Info()));
               },
             ),
             Divider(
@@ -216,10 +214,8 @@ class _BarberiaState extends State<Barberia> {
             ListTile(
               title: Text('Cortes de pelo'),
               onTap: () {
-                Navigator.push(context, new MaterialPageRoute(
-                  builder: (context) =>
-                    new Cortes()
-                ));
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) => new Cortes()));
               },
             ),
             Divider(
@@ -229,10 +225,10 @@ class _BarberiaState extends State<Barberia> {
             ListTile(
               title: Text('Localización'),
               onTap: () {
-                Navigator.push(context, new MaterialPageRoute(
-                  builder: (context) =>
-                    new Localizacion()
-                ));
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => new Localizacion()));
               },
             ),
             Divider(
@@ -240,83 +236,14 @@ class _BarberiaState extends State<Barberia> {
               height: 5.0,
             ),
             ListTile(
-              title: Text('Cerrar sesión'),
-              onTap: () {
-                _signOut();
-                exit(0);
-                }
-            )
+                title: Text('Cerrar sesión'),
+                onTap: () {
+                  _signOut();
+                  exit(0);
+                })
           ],
         ),
       ),
     );
   }
-
 }
-
-
-
-
-      // body: Center(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: <Widget>[
-      //       Text('Reservar'),
-      //       IconButton(
-      //         icon: Icon(Icons.add_box),
-      //         iconSize: 70,
-      //         onPressed: () {
-      //            Navigator.push(context, new MaterialPageRoute(
-      //             builder: (context) =>
-      //               new Reserves()
-      //           ));
-      //         },
-      //       ),
-      //       Text('Productos'),
-      //       IconButton(
-      //         icon: Icon(Icons.add_shopping_cart),
-      //         iconSize: 70,
-      //         onPressed: () {
-      //            Navigator.push(context, new MaterialPageRoute(
-      //             builder: (context) =>
-      //               new Productos()
-      //           ));
-      //         },
-      //       ),
-      //       Text('Corte de pelo'),
-      //       IconButton(
-      //         icon: Icon(Icons.content_cut),
-      //         iconSize: 70,
-      //         onPressed: () {
-      //           Navigator.push(context, new MaterialPageRoute(
-      //             builder: (context) =>
-      //               new Cortes()
-      //           ));
-      //         },
-      //       ),
-      //       Text('Horario'),
-      //       IconButton(
-      //         icon: Icon(Icons.calendar_today),
-      //         iconSize: 70,
-      //         onPressed: () {
-      //           Navigator.push(context, new MaterialPageRoute(
-      //             builder: (context) =>
-      //               new Schedule()
-      //           ));
-      //         },
-      //       ),
-      //       Text('Localización'),
-      //       IconButton(
-      //         icon: Icon(Icons.location_on),
-      //         iconSize: 70,
-      //         onPressed: () {
-      //           Navigator.push(context, new MaterialPageRoute(
-      //             builder: (context) =>
-      //               new Localizacion()
-      //           ));
-      //         },
-      //       ),
-      //     ],
-      //   ),
-      // ),
-
