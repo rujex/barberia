@@ -8,3 +8,5 @@ Reserva tu cita seleccionando una fecha y se mostrará en un listado las horas d
 
 
 Se utiliza una base de datos de firebase.
+
+https://view.genial.ly/5cf551e9bbf1310f6e9fd72c/presentation-barberia
